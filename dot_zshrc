@@ -1,8 +1,6 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"; fi
 
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 HISTFILE=~/.histfile
 HISTSIZE=999999999
@@ -16,31 +14,22 @@ zle -N down-line-or-beginning-search
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
-eval "$(ssh-agent -s)" 1> /dev/null
-ssh-add /home/u/OneDrive/dev/ssh/id_ed25519 2> /dev/null
-
-git config --global user.email "ulissesjoao2005@gmail.com" && git config --global user.name "Ulisses João de Oliveira"
-
-export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.local/share/pnpm:$HOME/.bin"
 autoload -Uz compinit
 compinit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-alias verals='ls /media/m2'
-alias veracd='cd /media/m2'
-alias veraoff='veracrypt -d'
-alias veraon='veracrypt -t -k "" --pim=0 --protect-hidden=no /dev/sda /media/m2'
-alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
+
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
+alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
 alias usage='du -h . -d 1'
 alias ls='exa -lh'
 alias l='exa -lh'
-alias nf='neofetch'
 alias cat='bat'
+alias nf='neofetch'
 alias cfg='nano $HOME/.zshrc'
-alias update='trizen -Syu --noconfirm'
+alias gc='git clone --depth=1'
 alias inst='trizen -S --noconfirm'
 alias unins='trizen -Rns --noconfirm'
-alias gc='git clone --depth=1'
+alias update='trizen -Syu --noconfirm'
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
