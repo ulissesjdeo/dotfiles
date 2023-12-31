@@ -28,8 +28,8 @@ alias cat='bat'
 alias nf='neofetch'
 alias cfg='nano $HOME/.zshrc'
 alias gc='git clone --depth=1'
-alias inst='trizen -S --noconfirm'
-alias unins='trizen -Rns --noconfirm'
-alias update='trizen -Syu --noconfirm'
+alias inst='paru -S --noconfirm'
+alias unins='paru -Rns --noconfirm'
+alias update='paru -Syu --noconfirm'
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
