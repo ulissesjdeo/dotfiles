@@ -21,7 +21,9 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
 alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
+alias java8='/usr/lib/jvm/java-8-jre/jre/bin/java'
 alias usage='du -h . -d 1'
+alias op='ssh dietpi@op'
 alias ls='exa -lh'
 alias l='exa -lh'
 alias cat='bat'
@@ -30,10 +32,15 @@ alias nv='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias neovim='nvim'
+alias sn='sudo nano'
+alias catt='/usr/bin/cat'
 alias cfg='nano $HOME/.zshrc'
 alias gc='git clone --depth=1'
 alias inst='paru -S --noconfirm'
 alias unins='paru -Rns --noconfirm'
 alias update='paru -Syu --noconfirm'
+
+eval $(ssh-agent -s) 1> /dev/null
+ssh-add OneDrive/dev/ssh/id_ed25519 2> /dev/null
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
