@@ -72,7 +72,10 @@ initrd /initramfs-linux-zen.img
 options root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2 rw quiet nmi_watchdog=0 mitigations=off systemd.show_status=false rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1
 
 # If using Sway
-pacman -S sway swaybg foot fuzzel kanshi
+pacman -S sway swaybg foot fuzzel kanshi xorg-xwayland
+
+# If using KDE
+pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons kscreen
 
 # Essential packages
 pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim

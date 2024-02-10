@@ -6,6 +6,10 @@ set $M Mod4
 
 exec kanshi
 
+#bar { 
+#     swaybar_command waybar
+#}
+
 mouse_warping container
 focus_follows_mouse yes
 smart_borders yes

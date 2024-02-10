@@ -8,6 +8,7 @@ export XDG_CURRENT_DESKTOP=KDE
 
 alias op='ssh u@op'
 alias sw='exec sway'
+alias stopdroid='sudo systemctl stop waydroid-container'
 
 alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
 alias boottime='sudo systemd-analyze blame'
@@ -19,6 +20,7 @@ alias ac='sudo tlp ac'
 alias czcd='cd .local/share/chezmoi'
 alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
 alias l='eza -lh --ignore-glob="*NTUSER*|msys2"'
+alias bright='brightnessctl s'
 alias usage='du -h . -d 1'
 alias mem='free -m'
 alias cls='clear'
