@@ -1,0 +1,72 @@
+set $M Mod4
+
+#output eDP-1 mode 1920x1080@60Hz position 0,0 scale 1.5
+#output DP-2 mode 1920x1080@60Hz position 0,0 scale 1
+#output DP-1 mode 1920x1080@60Hz position 0,0 scale 1
+
+exec kanshi
+
+mouse_warping container
+focus_follows_mouse yes
+smart_borders yes
+
+input * {
+    xkb_layout "us,br"
+    xkb_options grp:alt_shift_toggle
+}
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+input <identifier> repeat_delay 300
+input <identifier> repeat_rate 30
+
+floating_modifier $M normal
+
+output * bg #000000 solid_color
+default_border none
+
+bindsym $M+f fullscreen
+bindsym $M+c reload
+bindsym $M+p kill
+bindsym $M+t exec foot
+bindsym $M+r exec fuzzel
+bindsym $M+m exec sway exit
+bindsym $M+l exec swaylock -c 000000
+bindsym $M+g exec google-chrome-stable
+
+bindsym $M+Left focus left
+bindsym $M+Down focus down
+bindsym $M+Up focus up
+bindsym $M+Right focus right
+
+bindsym $M+Shift+Left move left
+bindsym $M+Shift+Down move down
+bindsym $M+Shift+Up move up
+bindsym $M+Shift+Right move right
+
+bindsym $M+1 workspace number 1
+bindsym $M+2 workspace number 2
+bindsym $M+3 workspace number 3
+bindsym $M+4 workspace number 4
+bindsym $M+5 workspace number 5
+bindsym $M+6 workspace number 6
+bindsym $M+7 workspace number 7
+bindsym $M+8 workspace number 8
+bindsym $M+9 workspace number 9
+bindsym $M+0 workspace number 10
+
+bindsym $M+Shift+1 move container to workspace number 1
+bindsym $M+Shift+2 move container to workspace number 2
+bindsym $M+Shift+3 move container to workspace number 3
+bindsym $M+Shift+4 move container to workspace number 4
+bindsym $M+Shift+5 move container to workspace number 5
+bindsym $M+Shift+6 move container to workspace number 6
+bindsym $M+Shift+7 move container to workspace number 7
+bindsym $M+Shift+8 move container to workspace number 8
+bindsym $M+Shift+9 move container to workspace number 9
+bindsym $M+Shift+0 move container to workspace number 10
+
+include /etc/sway/config.d/*

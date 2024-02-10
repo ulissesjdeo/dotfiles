@@ -1,0 +1,32 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"; fi
+
+HISTFILE=~/.histfile
+HISTSIZE=999999999
+SAVEHIST=999999999
+setopt appendhistory
+
+source .zsh/powerlevel10k/powerlevel10k.zsh-theme
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+autoload -Uz compinit
+compinit
+
+source .zsh/syntax_highlighting/zsh-syntax-highlighting.zsh
+source .zsh/autosuggestions/zsh-autosuggestions.zsh
+source .zsh/history_substring_search/zsh-history-substring-search.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey "^[[3~" delete-char
+
+alias cfg='nano $HOME/.zshrc'
+
+eval $(ssh-agent -s) 1> /dev/null
+source ~/.profile
+source ~/.p10k.zsh
