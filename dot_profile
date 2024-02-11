@@ -10,6 +10,8 @@ alias op='ssh u@op'
 alias sw='exec sway'
 alias stopdroid='sudo systemctl stop waydroid-container'
 
+alias cache='sudo su -c "/root/cache.sh"'
+
 alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
 alias boottime='sudo systemd-analyze blame'
 alias mkinit='sudo mkinitcpio -P'
@@ -75,7 +77,7 @@ czu () {
 }
 
 wcr () {
-	wc -l `find "$1" -type f` | tail -n 1
+	wc -l `find "$1" -not -iwholename '*.git*' -type f`
 }
 
 ssh-add $HOME/OneDrive/Documentos/private/ssh/id_ed25519 2> /dev/null
