@@ -1,56 +1,76 @@
 export ANDROID_HOME=$HOME/android-sdk
 export ANDROID_SDK_ROOT=$HOME/android-sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$HOME/.pub-cache/bin
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$HOME/.pub-cache/bin
+
 export CHROME_EXECUTABLE=google-chrome-stable
+
 export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=KDE
 
+export EDITOR=nvim
+
 alias op='ssh u@op'
-alias sw='exec sway'
-alias stopdroid='sudo systemctl stop waydroid-container'
 
-alias cache='sudo su -c "/root/cache.sh"'
-
-alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
-alias boottime='sudo systemd-analyze blame'
-alias mkinit='sudo mkinitcpio -P'
-alias gc='git clone --depth=1'
-alias batt='sudo tlp bat'
-alias ac='sudo tlp ac'
-
-alias czcd='cd .local/share/chezmoi'
-alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
-alias l='eza -lh --ignore-glob="*NTUSER*|msys2"'
-alias bright='brightnessctl s'
-alias usage='du -h . -d 1'
 alias mem='free -m'
-alias cls='clear'
+alias usage='du -h . -d 1'
+alias gc='git clone --depth=1'
+alias bright='brightnessctl s'
+alias stopdroid='sudo systemctl stop waydroid-container'
+alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
 
 alias g='git'
-alias e='exit'
 alias gi='git'
-alias nv='nvim'
-alias cat='bat'
-alias gr='grep'
-alias cl='clear'
-alias d='docker'
-alias rmd='rmdir'
-alias clea='clear'
+
 alias fl='flutter'
 alias ft='flutter'
-alias cz='chezmoi'
-alias sc='sudo cat'
-alias sn='sudo nano'
-alias ff='fastfetch'
-alias bt='bluetuith'
-alias r='exec river'
-alias catt='/bin/cat'
-alias czd='chezmoi diff'
-alias audio='pulsemixer'
-alias scout='docker scout'
-alias prof='nano $HOME/.profile'
+
+alias e='exit'
+alias ex='exit'
+alias exi='exit'
+
+alias cl='clear'
+alias cls='clear'
+alias clea='clear'
+
+alias d='docker'
+alias dock='docker'
+alias docke='docker'
+
+alias v='nvim'
+alias nv='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias neovim='nvim'
+
 alias plasma='exec startplasma-wayland'
+alias prof='nano $HOME/.profile'
+
+alias cat='bat'
+alias catt='/bin/cat'
+
+alias bt='bluetuith'
+alias ff='fastfetch'
+alias audio='pulsemixer'
+
+alias gr='grep'
+alias rmd='rmdir'
+
+alias sn='sudo nano'
+alias sc='sudo /bin/cat'
+
+alias cz='chezmoi'
+alias czd='chezmoi diff'
+alias czcd='cd .local/share/chezmoi'
+
+alias l='eza -lh --ignore-glob="*NTUSER*|msys2"'
+alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
+
+alias ac='sudo tlp ac'
+alias batt='sudo tlp bat'
+alias mkinit='sudo mkinitcpio -P'
+alias boottime='sudo systemd-analyze blame'
+alias cache='sudo su -c "/root/cache.sh"'
 
 alias shutdown='sudo shutdown -h now'
 alias reboot='sudo systemctl reboot'
@@ -61,7 +81,7 @@ alias update='paru -Syu --noconfirm'
 alias unins='sudo pacman -Rns --noconfirm'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
 
-alias backup_dmc='.config/scripts/backup/dmc.sh'
+alias backup_dmc='$HOME/.config/scripts/backup/dmc.sh'
 
 mkcd () {
 	mkdir "$1"
@@ -69,7 +89,7 @@ mkcd () {
 }
 
 czu () {
-	cd .local/share/chezmoi
+	cd $HOME/.local/share/chezmoi
 	git add .
 	git commit -m "$1"
 	git push

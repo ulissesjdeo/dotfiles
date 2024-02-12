@@ -51,8 +51,9 @@ passwd u
 passwd
 usermod -s /bin/sh root
 
-pacman -S iwd dhcpcd bluez bluez-utils pulseaudio pulseaudio-bluetooth
+pacman -S iwd dhcpcd tlp bluez bluez-utils pulseaudio pulseaudio-bluetooth
 systemctl enable iwd
+systemctl enable tlp
 systemctl enable dhcpcd
 systemctl enable bluetooth
 
@@ -78,7 +79,7 @@ pacman -S sway swaybg foot fuzzel kanshi xorg-xwayland
 pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons kscreen
 
 # Essential packages
-pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim
+pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp
 
 # /etc/systemd/logind.conf
 HandleLidSwitch=ignore
@@ -106,7 +107,7 @@ cd ..
 rm -rf paru-bin
 
 # Essential
-paru -S --noconfirm onedrive-abraunegg authy anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith whatsie
+paru -S --noconfirm onedrive-abraunegg authy anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith whatsie postman-bin etcher-bin
 exit
 
 exit

@@ -9,4 +9,4 @@ fi
 
 
 eval `ssh-agent -s` 1> /dev/null
-source ~/.profile
+source $HOME/.profile
