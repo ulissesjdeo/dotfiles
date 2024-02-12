@@ -8,16 +8,31 @@ export CHROME_EXECUTABLE=google-chrome-stable
 export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=KDE
 
+export SSH_KEY_LOCATION="$HOME/OneDrive/Documentos/private/ssh/id_ed25519"
+export SSH_KEY_LOCATION_FALLBACK="$HOME/.ssh/id_ed25519"
+
 export EDITOR=nvim
+export CLEAR=clear
+
+alias edit=$EDITOR
+alias editor=$EDITOR
+
+alias cl=$CLEAR
+alias cls=$CLEAR
+alias clea=$CLEAR
 
 alias op='ssh u@op'
 
 alias mem='free -m'
-alias usage='du -h . -d 1'
+alias usage='du -h -d 1 .'
 alias gc='git clone --depth=1'
 alias bright='brightnessctl s'
 alias stopdroid='sudo systemctl stop waydroid-container'
 alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
+
+alias c='cd'
+alias cb='cd ..'
+alias cdb='cd ..'
 
 alias g='git'
 alias gi='git'
@@ -29,10 +44,6 @@ alias e='exit'
 alias ex='exit'
 alias exi='exit'
 
-alias cl='clear'
-alias cls='clear'
-alias clea='clear'
-
 alias d='docker'
 alias dock='docker'
 alias docke='docker'
@@ -42,9 +53,6 @@ alias nv='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias neovim='nvim'
-
-alias plasma='exec startplasma-wayland'
-alias prof='nano $HOME/.profile'
 
 alias cat='bat'
 alias catt='/bin/cat'
@@ -59,6 +67,9 @@ alias rmd='rmdir'
 alias sn='sudo nano'
 alias sc='sudo /bin/cat'
 
+alias prof='nano $HOME/.profile'
+alias plasma='exec startplasma-wayland'
+
 alias cz='chezmoi'
 alias cza='chezmoi add'
 alias czd='chezmoi diff'
@@ -71,8 +82,10 @@ alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
 
 alias ac='sudo tlp ac'
 alias batt='sudo tlp bat'
+
 alias mkinit='sudo mkinitcpio -P'
 alias boottime='sudo systemd-analyze blame'
+
 alias cache='sudo su -c "/root/cache.sh"'
 
 alias shutdown='sudo shutdown -h now'
@@ -103,4 +116,5 @@ wcr () {
 	wc -l `find "$1" -not -iwholename '*.git*' -type f`
 }
 
-ssh-add $HOME/OneDrive/Documentos/private/ssh/id_ed25519 2> /dev/null
+if [ -f $SSH_KEY_LOCATION ]; then ssh-add $SSH_KEY_LOCATION 2> /dev/null; fi
+if [ -f $SSH_KEY_LOCATION_FALLBACK ]; then ssh-add $SSH_KEY_LOCATION_FALLBACK 2> /dev/null; fi
