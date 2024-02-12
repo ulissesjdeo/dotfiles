@@ -97,7 +97,7 @@ alias update='paru -Syu --noconfirm'
 alias unins='sudo pacman -Rns --noconfirm'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
 
-alias backup_dmc='$HOME/.config/scripts/backup/dmc.sh'
+alias backup_dmc='$HOME/.config/scripts/windows/dmc.sh'
 
 mkcd () {
 	mkdir "$1"
