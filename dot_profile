@@ -60,8 +60,11 @@ alias sn='sudo nano'
 alias sc='sudo /bin/cat'
 
 alias cz='chezmoi'
+alias cza='chezmoi add'
 alias czd='chezmoi diff'
+alias czi='chezmoi init --apply'
 alias czcd='cd .local/share/chezmoi'
+alias cziu='chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git'
 
 alias l='eza -lh --ignore-glob="*NTUSER*|msys2"'
 alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
