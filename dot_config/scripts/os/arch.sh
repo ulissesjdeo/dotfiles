@@ -79,7 +79,7 @@ pacman -S sway swaybg foot fuzzel kanshi xorg-xwayland
 pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons kscreen
 
 # Essential packages
-pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp
+pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip
 
 # /etc/systemd/logind.conf
 HandleLidSwitch=ignore

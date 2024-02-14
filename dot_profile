@@ -79,6 +79,8 @@ alias sc='sudo /bin/cat'
 alias prof='nano $HOME/.profile'
 alias plasma='exec startplasma-wayland'
 
+alias pip='python -m pip'
+
 alias cz='chezmoi'
 alias cza='chezmoi add'
 alias czd='chezmoi diff'
