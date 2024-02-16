@@ -61,7 +61,9 @@ alias ga='git add'
 alias gd='git diff'
 alias gm='git commit'
 alias gs='git status'
+alias gini='git init'
 alias gc='git clone --depth=1'
+alias gfc='git init && git add . && git commit -m "Initial commit"'
 
 # flutter
 alias fl='flutter'
