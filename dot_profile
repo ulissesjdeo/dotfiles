@@ -1,18 +1,30 @@
+# Android setup
 export ANDROID_HOME=$HOME/android-sdk
 export ANDROID_SDK_ROOT=$HOME/android-sdk
+
+# Java setup
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+# System vars setup
 export PATH=$PATH:$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$HOME/.pub-cache/bin
 
+# Chrome setup
 export CHROME_EXECUTABLE=google-chrome-stable
 
+# DE/WM setup
 export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=KDE
 
+# SSH setup
 export SSH_KEY_LOCATION="$HOME/OneDrive/Documentos/private/ssh/id_ed25519"
 export SSH_KEY_LOCATION_FALLBACK="$HOME/.ssh/id_ed25519"
 
+# OS/Environment setup
 export EDITOR=nvim
 export CLEAR=clear
+
+
+# START - Variable aliases
 
 alias edit=$EDITOR
 alias editor=$EDITOR
@@ -21,38 +33,39 @@ alias cl=$CLEAR
 alias cls=$CLEAR
 alias clea=$CLEAR
 
-alias op='ssh u@op'
+# END - Variable aliases
 
-alias mem='free -m'
-alias usage='du -h -d 1 .'
-alias gc='git clone --depth=1'
-alias bright='brightnessctl s'
-alias stopdroid='sudo systemctl stop waydroid-container'
-alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
 
+# cd
 alias c='cd'
 alias cdd='cd'
 alias cb='cd ..'
 alias cdb='cd ..'
 
+# git
 alias g='git'
 alias gi='git'
 alias ga='git add'
 alias gd='git diff'
 alias gm='git commit'
 alias gs='git status'
+alias gc='git clone --depth=1'
 
+# flutter
 alias fl='flutter'
 alias ft='flutter'
 
+# exit
 alias e='exit'
 alias ex='exit'
 alias exi='exit'
 
+# docker
 alias d='docker'
 alias dock='docker'
 alias docke='docker'
 
+# nvim
 alias v='nvim'
 alias nv='nvim'
 alias vi='nvim'
@@ -62,25 +75,23 @@ alias neov='nvim'
 alias neovi='nvim'
 alias neovim='nvim'
 
+# bat
 alias cat='bat'
 alias catt='/bin/cat'
 
-alias bt='bluetuith'
-alias ff='fastfetch'
-alias audio='pulsemixer'
-
+# grep
 alias gr='grep'
 alias gre='grep'
+
+# ls
+alias l='eza -lh --ignore-glob="*NTUSER*|msys2"'
+alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
+
+# rmdir
 alias rmd='rmdir'
+alias rmdi='rmdir'
 
-alias sn='sudo nano'
-alias sc='sudo /bin/cat'
-
-alias prof='nano $HOME/.profile'
-alias plasma='exec startplasma-wayland'
-
-alias pip='python -m pip'
-
+# chezmoi
 alias cz='chezmoi'
 alias cza='chezmoi add'
 alias czd='chezmoi diff'
@@ -88,19 +99,51 @@ alias czi='chezmoi init --apply'
 alias czcd='cd $HOME/.local/share/chezmoi'
 alias cziu='chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git'
 
-alias l='eza -lh --ignore-glob="*NTUSER*|msys2"'
-alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
+# python
+alias pytho='python'
+alias pip='python -m pip'
+
+
+# START - Utilities
+
+alias mem='free -m'
+alias bt='bluetuith'
+alias ff='fastfetch'
+alias audio='pulsemixer'
+alias usage='du -h -d 1 .'
+alias bright='brightnessctl s'
+alias prof='nano $HOME/.profile'
+alias plasma='exec startplasma-wayland'
+alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
+
+# END - Utilities
+# START - Sudo
+
+alias sm='sudo mv'
+alias sr='sudo rm'
+alias sn='sudo nano'
+alias sg='sudo grep'
+alias sf='sudo find'
+alias st='sudo touch'
+alias sown='sudo chown'
+alias smod='sudo chmod'
+alias sc='sudo /bin/cat'
 
 alias ac='sudo tlp ac'
 alias batt='sudo tlp bat'
 
+alias shutdown='sudo shutdown -h now'
+alias reboot='sudo systemctl reboot'
+
 alias mkinit='sudo mkinitcpio -P'
 alias boottime='sudo systemd-analyze blame'
 
+alias stopdroid='sudo systemctl stop waydroid-container'
+
 alias cache='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches && sudo swapoff -a && sudo swapon -a"'
 
-alias shutdown='sudo shutdown -h now'
-alias reboot='sudo systemctl reboot'
+# END - Sudo
+# START - Pacman
 
 alias pkg='pacman -Q | wc -l'
 alias inst='paru -S --noconfirm'
@@ -108,7 +151,8 @@ alias update='paru -Syu --noconfirm'
 alias unins='sudo pacman -Rns --noconfirm'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
 
-alias backup_dmc='$HOME/.config/scripts/windows/dmc.sh'
+# END - Pacman
+# START - Functions
 
 mkcd () {
 	mkdir "$1"
@@ -127,5 +171,18 @@ wcr () {
 	wc -l `find "$1" -not -iwholename '*.git*' -type f`
 }
 
+own () {
+	sudo chmod 775 -R "$1"
+	sudo chown $USER:$USER -R "$1"
+}
+
+run () {
+	sudo chmod +x "$1"
+	./$1
+}
+
+# END - Functions
+
+# ssh
 if [ -f $SSH_KEY_LOCATION ]; then ssh-add $SSH_KEY_LOCATION 2> /dev/null; fi
 if [ -f $SSH_KEY_LOCATION_FALLBACK ]; then ssh-add $SSH_KEY_LOCATION_FALLBACK 2> /dev/null; fi
