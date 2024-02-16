@@ -152,9 +152,13 @@ alias reboot='sudo systemctl reboot'
 alias mkinit='sudo mkinitcpio -P'
 alias boottime='sudo systemd-analyze blame'
 
+alias uwin='sudo umount /mnt/win'
+alias win='sudo mount /dev/nvme0n1p3 /mnt/win'
+
 alias stopdroid='sudo systemctl stop waydroid-container'
 
-alias cache='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches && sudo swapoff -a && sudo swapon -a"'
+alias cache='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches'
+alias caches='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches && sudo swapoff -a && sudo swapon -a"'
 
 # END - Sudo
 # START - Pacman
