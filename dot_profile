@@ -42,6 +42,18 @@ alias cdd='cd'
 alias cb='cd ..'
 alias cdb='cd ..'
 
+# micro
+alias mic='micro'
+alias micr='micro'
+
+# nano
+alias na='nano'
+alias nan='nano'
+
+# df
+alias df='duf'
+alias dff='/usr/bin/df'
+
 # git
 alias g='git'
 alias gi='git'
@@ -106,6 +118,7 @@ alias pip='python -m pip'
 
 # START - Utilities
 
+alias tut='tldr'
 alias mem='free -m'
 alias bt='bluetuith'
 alias ff='fastfetch'
