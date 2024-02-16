@@ -107,7 +107,7 @@ cd ..
 rm -rf paru-bin
 
 # Essential
-paru -S --noconfirm onedrive-abraunegg authy anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith whatsie postman-bin etcher-bin scc
+paru -S --noconfirm onedrive-abraunegg authy anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith postman-bin etcher-bin scc
 exit
 
 exit
