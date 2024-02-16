@@ -113,6 +113,7 @@ alias audio='pulsemixer'
 alias usage='du -h -d 1 .'
 alias bright='brightnessctl s'
 alias prof='nano $HOME/.profile'
+alias routine='update && orphans; pkg'
 alias plasma='exec startplasma-wayland'
 alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
 
