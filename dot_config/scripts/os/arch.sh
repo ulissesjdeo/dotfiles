@@ -79,7 +79,7 @@ pacman -S sway swaybg foot fuzzel kanshi xorg-xwayland
 pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons kscreen kcalc konsole dolphin spectacle
 
 # Essential packages
-pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip tldr micro tree most jq diff-so-fancy duf
+pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip tldr micro tree most jq diff-so-fancy duf php
 
 # /etc/systemd/logind.conf
 HandleLidSwitch=ignore
@@ -107,7 +107,7 @@ cd ..
 rm -rf paru-bin
 
 # Essential
-paru -S --noconfirm onedrive-abraunegg authy anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith postman-bin etcher-bin scc
+paru -S --noconfirm onedrive-abraunegg authy anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith postman-bin etcher-bin scc pycharm-community-jre
 exit
 
 exit
