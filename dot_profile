@@ -159,6 +159,11 @@ mkcd () {
 	cd "$1"
 }
 
+cdrm () {
+	cd ..
+	rm -rf $OLDPWD
+}
+
 czu () {
 	cd $HOME/.local/share/chezmoi
 	git add .
@@ -179,6 +184,10 @@ own () {
 run () {
 	sudo chmod +x "$1"
 	./$1
+}
+
+gcu () {
+	git clone --depth=1 git@github.com:ulissesjdeo/$1.git
 }
 
 # END - Functions
