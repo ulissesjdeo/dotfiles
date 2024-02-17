@@ -98,8 +98,10 @@ alias gr='grep'
 alias gre='grep'
 
 # ls
-alias l='eza -lh --ignore-glob="*NTUSER*|msys2"'
-alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
+alias lscount='ls -l ./ | sed 1d | wc -l'
+alias countls='ls -l ./ | sed 1d | wc -l'
+alias l='eza -lh -s size --ignore-glob="*NTUSER*|msys2"'
+alias ls='eza -lh -s size --ignore-glob="*NTUSER*|msys2"'
 
 # rmdir
 alias rmd='rmdir'
