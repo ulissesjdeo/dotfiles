@@ -74,6 +74,11 @@ alias e='exit'
 alias ex='exit'
 alias exi='exit'
 
+# rfkill
+alias rf='rfkill'
+alias rftogwi='rfkill toggle wifi'
+alias rftogbt='rfkill toggle bluetooth'
+
 # docker
 alias d='docker'
 alias dock='docker'
