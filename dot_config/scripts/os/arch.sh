@@ -76,7 +76,7 @@ options root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2 rw quiet nmi_watchdog=0 mitiga
 pacman -S sway swaybg foot fuzzel kanshi xorg-xwayland
 
 # If using KDE
-pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons kscreen kcalc konsole dolphin spectacle
+pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons kscreen kcalc konsole dolphin spectacle okular
 
 # Essential packages
 pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip tldr micro tree most jq diff-so-fancy duf php

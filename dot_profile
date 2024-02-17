@@ -105,6 +105,11 @@ alias ls='eza -lh --ignore-glob="*NTUSER*|msys2"'
 alias rmd='rmdir'
 alias rmdi='rmdir'
 
+# onedrive
+alias oned='onedrive --synchronize --syncdir=$HOME/OneDrive'
+alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
+alias onedrivemon='/bin/onedrive --monitor --syncdir=$HOME/OneDrive --disable-notifications'
+
 # chezmoi
 alias cz='chezmoi'
 alias cza='chezmoi add'
@@ -135,7 +140,6 @@ alias prof='nano $HOME/.profile'
 alias usage='du -h -d 1 . 2> /dev/null'
 alias plasma='exec startplasma-wayland'
 alias routine='update && orphans; pkg && caches'
-alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
 
 # END - Utilities
 # START - Sudo
