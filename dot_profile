@@ -139,7 +139,7 @@ alias bright='brightnessctl s'
 alias prof='nano $HOME/.profile'
 alias usage='du -h -d 1 . 2> /dev/null'
 alias plasma='exec startplasma-wayland'
-alias routine='update && orphans; pkg && caches'
+alias routine='update && orphans; pkg && caches && clean'
 
 # END - Utilities
 # START - Sudo
