@@ -216,6 +216,18 @@ gcu () {
 	git clone --depth=1 git@github.com:ulissesjdeo/$1.git
 }
 
+glu () {
+	git clone --depth=1 git@gitlab.com:ulissesjdeo/$1.git
+}
+
+drupal7prepare () {
+	mv robots.txt sites/
+	rm *.txt
+	mv sites/robots.txt .
+	rm -r sites/
+	rm install.php
+}
+
 # END - Functions
 
 # ssh
