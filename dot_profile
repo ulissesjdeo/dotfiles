@@ -138,7 +138,6 @@ alias mem='free -m'
 alias bt='bluetuith'
 alias ff='fastfetch'
 alias audio='pulsemixer'
-alias bright='brightnessctl s'
 alias prof='nano $HOME/.profile'
 alias usage='du -h -d 1 . 2> /dev/null'
 alias plasma='exec startplasma-wayland'
@@ -233,6 +232,10 @@ drupal7prepare () {
 	mv sites/robots.txt .
 	rm -r sites/
 	rm install.php
+}
+
+bright () {
+	brightnessctl s $1%
 }
 
 # END - Functions
