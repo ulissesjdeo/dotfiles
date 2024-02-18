@@ -151,6 +151,8 @@ alias routine='update && orphans; pkg && caches && clean'
 # END - Utilities
 # START - Sudo
 
+alias s='sudo'
+alias sud='sudo'
 alias sm='sudo mv'
 alias sr='sudo rm'
 alias sn='sudo nano'
