@@ -162,6 +162,7 @@ alias st='sudo touch'
 alias sown='sudo chown'
 alias smod='sudo chmod'
 alias sc='sudo /bin/cat'
+alias srmrf='sudo rm -rf'
 
 alias ac='sudo tlp ac'
 alias batt='sudo tlp bat'
