@@ -71,8 +71,12 @@ alias ft='flutter'
 
 # exit
 alias e='exit'
+alias E='exit'
 alias ex='exit'
+alias EX='exit'
 alias exi='exit'
+alias EXI='exit'
+alias EXIT='exit'
 
 # rfkill
 alias rf='rfkill'
