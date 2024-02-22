@@ -76,10 +76,10 @@ options root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2 rw quiet nmi_watchdog=0 mitiga
 pacman -S sway swaybg foot fuzzel kanshi xorg-xwayland
 
 # If using KDE
-pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons kscreen kcalc konsole dolphin spectacle okular kate
+pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons plasma-pa kscreen kcalc konsole dolphin spectacle okular kate
 
 # Essential packages
-pacman -S chezmoi pulsemixer discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip tldr micro tree most jq diff-so-fancy duf php
+pacman -S chezmoi discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip tldr micro tree most jq diff-so-fancy duf php fd sccache eza bat ripgrep dust podman podman-docker
 
 # /etc/systemd/logind.conf
 HandleLidSwitch=ignore
@@ -107,11 +107,17 @@ cd ..
 rm -rf paru-bin
 
 # Essential
-paru -S --noconfirm onedrive-abraunegg authy anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith postman-bin etcher-bin scc pycharm-community-jre rustdesk-bin floorp-bin
+paru -S --noconfirm onedrive-abraunegg anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith postman-bin etcher-bin scc pycharm-community-jre rustdesk-bin floorp-bin
 exit
 
 exit
 umount -R /mnt
 reboot
 
+# Post-install setup
+
 chezmoi init --apply https://github.com/ulissesjdeo/dotfiles.git
+
+ln -s $HOME/OneDrive/Desktop Desktop
+ln -s $HOME/OneDrive/Docs Documents
+ln -s $HOME/OneDrive/Documentos/work Work
