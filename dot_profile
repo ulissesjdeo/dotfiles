@@ -112,6 +112,10 @@ alias countls='ls -l ./ | sed 1d | wc -l'
 alias l='eza -lh -s size --ignore-glob="*NTUSER*|msys2"'
 alias ls='eza -lh -s size --ignore-glob="*NTUSER*|msys2"'
 
+# rm
+alias r='rm'
+alias rmrf='rf -rf'
+
 # rmdir
 alias rmd='rmdir'
 alias rmdi='rmdir'
