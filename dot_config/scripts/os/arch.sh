@@ -79,7 +79,7 @@ pacman -S sway swaybg foot fuzzel kanshi xorg-xwayland
 pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons plasma-pa kscreen kcalc konsole dolphin spectacle okular kate
 
 # Essential packages
-pacman -S chezmoi discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip tldr micro tree most jq diff-so-fancy duf php fd sccache eza bat ripgrep dust podman podman-docker
+pacman -S chezmoi discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip php podman podman-docker micro jq
 
 # /etc/systemd/logind.conf
 HandleLidSwitch=ignore
