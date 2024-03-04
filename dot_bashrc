@@ -1,12 +1,8 @@
 # config
 alias cfg='nano $HOME/.bashrc'
 
-# Windows
-if [[ $platform == 'msys' ]]; then
-	export PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[32m\]\u@\h \[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\] $ "
-else
-	export PS1='\[\e[38;5;40;2;3m\]\u@\H\[\e[0m\] \[\e[93m\]\w\[\e[0m\] \$ '
-fi
+# ps1
+PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " %s")'; PS1='\w\[\e[2m\]${PS1_CMD1}\[\e[0m\] > '
 
 # ssh
 eval `ssh-agent -s` 1> /dev/null

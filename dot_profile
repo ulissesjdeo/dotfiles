@@ -152,6 +152,7 @@ alias venvcu='python -m venv .venv; source .venv/bin/activate; pip install -r re
 
 # START - Utilities
 
+alias pc='username=$(whoami); hostname=$(hostname); echo "$username@$hostname"'
 alias tut='tldr'
 alias mem='free -m'
 alias bt='bluetuith'
