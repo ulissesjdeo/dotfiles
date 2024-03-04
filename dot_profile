@@ -140,7 +140,7 @@ alias czcd='cd $HOME/.local/share/chezmoi'
 alias cziu='chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git'
 
 # python
-alias pytho='python'
+alias py='python'
 alias venvd='deactivate'
 alias pip='python -m pip'
 alias venv='python -m venv'
