@@ -114,6 +114,7 @@ alias ls='eza -lh -s size --ignore-glob="*NTUSER*|msys2"'
 
 # rm
 alias r='rm'
+alias rmf='rm -rf'
 alias rmrf='rm -rf'
 
 # rmdir
