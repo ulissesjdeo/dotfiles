@@ -127,6 +127,7 @@ alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
 alias onedrivemon='/bin/onedrive --monitor --syncdir=$HOME/OneDrive --disable-notifications'
 
 # django
+alias dj='python -m django'
 alias djrun='python manage.py runserver'
 alias djmak='python manage.py makemigrations'
 alias djmig='python manage.py migrate'
@@ -213,6 +214,13 @@ alias clean='paru -Sc --noconfirm; paru -Scc --noconfirm; paru -Scd --noconfirm;
 
 # END - Pacman
 # START - Functions
+
+saferm () {
+	mkdir $HOME/.deleted 2> /dev/null
+	timestamp=$(date +%s)
+	mkdir $HOME/.deleted/$timestamp 2> /dev/null
+	mv "$1" $HOME/.deleted/$timestamp
+}
 
 mkcd () {
 	mkdir "$1"
