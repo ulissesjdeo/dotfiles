@@ -35,6 +35,8 @@ alias clea=$CLEAR
 
 # END - Variable aliases
 
+# dirs
+alias planner="cd $HOME/OneDrive/ITA/Planner"
 
 # cd
 alias c='cd'
@@ -220,6 +222,7 @@ saferm () {
 	timestamp=$(date +%s)
 	mkdir $HOME/.deleted/$timestamp 2> /dev/null
 	mv "$1" $HOME/.deleted/$timestamp
+	echo "Safely removed $1 to $HOME/.deleted/$timestamp/$1"
 }
 
 mkcd () {
