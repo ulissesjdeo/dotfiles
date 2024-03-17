@@ -22,6 +22,7 @@ export SSH_KEY_LOCATION_FALLBACK="$HOME/.ssh/id_ed25519"
 # OS/Environment setup
 export EDITOR=nvim
 export CLEAR=clear
+export HOMELAB='u@op'
 
 
 # START - Variable aliases
@@ -35,6 +36,9 @@ alias clea=$CLEAR
 
 # END - Variable aliases
 
+
+# homelab
+alias hl="ssh $HOMELAB"
 
 # dirs
 alias planner="cd $HOME/dev/planner"
@@ -276,6 +280,10 @@ drupal7prepare () {
 
 bright () {
 	brightnessctl s $1%
+}
+
+hlcp () {
+	scp -r $HOMELAB:$1 $2
 }
 
 # END - Functions
