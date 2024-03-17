@@ -1,8 +1,9 @@
 # On Arch systems
-#sudo pacman -S tealdeer tree most duf fd sccache eza bat ripgrep dust procs bottom broot tokei fclones htmlq legdur lemmeknow just rargs pastel macchina ouch teehee kibi
+#sudo pacman -S tealdeer tree most duf fd sccache eza bat ripgrep dust procs bottom broot tokei fclones htmlq legdur lemmeknow just rargs pastel macchina ouch teehee kibi zeitfetch
 #cargo install cargo-watch
 
 # On Windows systems
+cargo install zeitfetch
 cargo install tealdeer
 cargo install tree-rs
 cargo install duf
