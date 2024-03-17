@@ -16,7 +16,6 @@ export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=KDE
 
 # SSH setup
-export SSH_DIR="$HOME/OneDrive/Documentos/private/ssh"
 export SSH_KEY_LOCATION="$HOME/OneDrive/Documentos/private/ssh/id_ed25519"
 export SSH_KEY_LOCATION_FALLBACK="$HOME/.ssh/id_ed25519"
 
@@ -40,6 +39,9 @@ alias clea=$CLEAR
 
 # homelab
 alias hl="ssh $HOMELAB"
+
+# ssh
+alias add_key_to_remote='ssh-copy-id'
 
 # dirs
 alias planner="cd $HOME/dev/planner"
