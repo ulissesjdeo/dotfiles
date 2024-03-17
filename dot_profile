@@ -35,8 +35,9 @@ alias clea=$CLEAR
 
 # END - Variable aliases
 
+
 # dirs
-alias planner="cd $HOME/OneDrive/ITA/Planner"
+alias planner="cd $HOME/dev/planner"
 
 # cd
 alias c='cd'
