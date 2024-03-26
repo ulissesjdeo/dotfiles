@@ -44,7 +44,7 @@ alias hl="ssh $HOMELAB"
 alias add_key_to_remote='ssh-copy-id'
 
 # dirs
-alias planner="cd $HOME/dev/planner"
+alias planner="cd $HOME/Documents/planner"
 
 # cd
 alias c='cd'
@@ -67,9 +67,8 @@ alias dff='/usr/bin/df'
 # git
 alias g='git'
 alias gi='git'
-alias ga='git add'
+alias ga='git add .'
 alias gd='git diff'
-alias gm='git commit'
 alias gs='git status'
 alias gini='git init'
 alias gc='git clone --depth=1'
@@ -289,6 +288,11 @@ bright () {
 
 hlcp () {
 	scp -r $HOMELAB:$1 $2
+}
+
+# FIXME: Not working with more than 1 word inside "string"
+gm () {
+	git commit -m $1
 }
 
 # END - Functions
