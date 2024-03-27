@@ -44,7 +44,7 @@ alias hl="ssh $HOMELAB"
 alias add_key_to_remote='ssh-copy-id'
 
 # dirs
-alias planner="cd $HOME/Documents/planner"
+alias planner="cd $HOME/Documents/planner && python planner.py"
 
 # cd
 alias c='cd'
