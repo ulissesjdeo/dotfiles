@@ -22,7 +22,6 @@ export SSH_KEY_LOCATION_FALLBACK="$HOME/.ssh/id_ed25519"
 # OS/Environment setup
 export EDITOR=nvim
 export CLEAR=clear
-export HOMELAB='u@op'
 
 
 # START - Variable aliases
@@ -37,8 +36,10 @@ alias clea=$CLEAR
 # END - Variable aliases
 
 
-# homelab
-alias hl="ssh $HOMELAB"
+# local network
+alias op='ssh u@192.168.31.202'
+alias miner='ssh u@192.168.31.71'
+
 
 # ssh
 alias add_key_to_remote='ssh-copy-id'
@@ -168,7 +169,7 @@ alias venvcu='python -m venv .venv; source .venv/bin/activate; pip install -r re
 
 alias hosts='nano /etc/hosts'
 alias hostswin='nano /c/Windows/System32/drivers/etc/hosts'
-alias pc='username=$(whoami); hostname=$(hostname); echo "$username@$hostname"'
+alias pc='echo "$(whoami)@$HOST"'
 alias tut='tldr'
 alias mem='free -m'
 alias bt='bluetuith'
