@@ -1,15 +1,11 @@
-loadkeys br-abnt2
 setfont ter-132b
 iwctl station wlan0 connect $SSID
 
 gdisk /dev/nvme0nX
-# 512 MB - EFI (ef00)
-# 8 GB - SWAP (8200)
-# Free space - Root (8304)
 
 mkfs.fat -F 32 /dev/nvme0nXp1
 mkswap /dev/nvme0nXp2
-mkfs.ext4 /dev/nvme0nXp3
+mkfs.f2fs /dev/nvme0nXp3
 
 mount /dev/nvme0nXp3 /mnt
 mount /dev/nvme0nXp1 /mnt/boot --mkdir
@@ -18,7 +14,16 @@ swapon /dev/nvme0nXp2
 # /etc/pacman.conf
 ParallelDownloads = 3
 
-pacstrap -K /mnt intel-ucode sof-firmware base base-devel linux-zen linux-zen-headers linux-firmware git nano sudo ttf-liberation less
+pacstrap -K /mnt intel-ucode sof-firmware base linux linux-firmware nano sudo
+
+# /mnt/etc/mkinitcpio.conf
+MODULES=(nvme_core nvme f2fs)
+HOOKS=(base resume autodetect microcode modconf kms)
+
+# /mnt/etc/mkinitcpio.d/linux.preset
+PRESETS=('default')
+
+pacstrap -K /mnt intel-ucode sof-firmware base linux linux-firmware nano sudo
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
@@ -28,17 +33,13 @@ hwclock --systohc
 # /etc/locale.gen
 en_US.UTF-8 UTF-8
 
-# Generate locales
 locale-gen
 
 # /etc/locale.conf
 LANG=en_US.UTF-8
 
-# /etc/vconsole.conf
-KEYMAP=br-abnt2
-
 # /etc/hostname
-note
+n
 
 # /etc/pacman.conf
 ParallelDownloads = 3
@@ -47,14 +48,13 @@ ParallelDownloads = 3
 %wheel ALL=(ALL:ALL) NOPASSWD: ALL
 
 useradd -mG wheel u
+usermod -s /bin/sh root
 passwd u
 passwd
-usermod -s /bin/sh root
 
-pacman -S iwd dhcpcd tlp bluez bluez-utils pulseaudio pulseaudio-bluetooth
-systemctl enable iwd
-systemctl enable tlp
-systemctl enable dhcpcd
+pacman -S networkmanager irqbalance bluez
+systemctl enable NetworkManager
+systemctl enable irqbalance
 systemctl enable bluetooth
 
 bootctl install
@@ -67,24 +67,17 @@ editor no
 
 # /boot/loader/entries/arch.conf
 title Arch Linux
-linux /vmlinuz-linux-zen
+linux /vmlinuz-linux
 initrd /intel-ucode.img
-initrd /initramfs-linux-zen.img
-options root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2 rw quiet nmi_watchdog=0 mitigations=off systemd.show_status=false rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1
+initrd /initramfs-linux.img
+options root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2 rw quiet nmi_watchdog=0 mitigations=off \
+    systemd.show_status=false rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1
 
-# If using Sway
-pacman -S sway swaybg foot fuzzel kanshi xorg-xwayland
-
-# If using KDE
-pacman -S plasma-desktop plasma-wayland-session plasma5-applets-window-buttons plasma-pa kscreen kcalc konsole dolphin spectacle okular kate
-
-# Essential packages
-pacman -S chezmoi discord telegram-desktop sqlitebrowser ntfs-3g fastfetch brightnessctl dosfstools neovim p7zip gimp python-pip php podman podman-docker micro jq
-
-# /etc/systemd/logind.conf
-HandleLidSwitch=ignore
-HandleLidSwitchDocked=ignore
-HandleLidSwitchExternalPower=ignore
+pacman -S \
+    plasma-desktop plasma-nm plasma-pa bluedevil git zip \
+    power-profiles-daemon kscreen kcalc konsole dolphin \
+    spectacle chezmoi discord telegram-desktop p7zip wine \
+    ntfs-3g neovim bitwarden flatpak base-devel unzip
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
@@ -92,32 +85,54 @@ AllowHibernation=yes
 AllowSuspendThenHibernate=no
 AllowHybridSleep=no
 
-# /etc/mkinitcpio.conf
-MODULES=(ext4 nvme nvme_core)
-HOOKS=(base autodetect resume modconf kms)
-
-# /etc/mkinitcpio.d/linux-zen.preset
-PRESETS=('default')
-
 su - u
 git clone --depth=1 https://aur.archlinux.org/paru-bin.git
 cd paru-bin
-yes | makepkg -si
+makepkg -si
 cd ..
 rm -rf paru-bin
 
 # Essential
-paru -S --noconfirm onedrive-abraunegg anki-bin google-chrome visual-studio-code-bin spotify-wayland bluetuith postman-bin etcher-bin scc pycharm-community-jre rustdesk-bin floorp-bin
+paru -S --noconfirm \
+    onedrive-abraunegg anki-bin google-chrome snapd qpdfview \
+    visual-studio-code-bin spotify thorium-browser-bin zapzap \
+    prismlauncher-qt5-bin 
 exit
 
 exit
 umount -R /mnt
 reboot
 
+
+
 # Post-install setup
 
-chezmoi init --apply https://github.com/ulissesjdeo/dotfiles.git
 
+
+# Files and configs
+onedrive --synchronize
+chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git
 ln -s $HOME/OneDrive/Desktop Desktop
 ln -s $HOME/OneDrive/Docs Documents
-ln -s $HOME/OneDrive/Documentos/work Work
+
+
+
+# ALHP
+paru -S --noconfirm alhp-keyring alhp-mirrorlist
+
+# /etc/pacman.conf
+[core-x86-64-v3]
+Include = /etc/pacman.d/alhp-mirrorlist
+
+[extra-x86-64-v3]
+Include = /etc/pacman.d/alhp-mirrorlist
+
+[multilib-x86-64-v3]
+Include = /etc/pacman.d/alhp-mirrorlist
+
+paru -Syu
+
+
+
+# Steam
+paru -S steam-native-runtime

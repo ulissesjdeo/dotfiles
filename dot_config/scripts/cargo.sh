@@ -1,6 +1,10 @@
+echo "Keep uncommented just what you will use"
+echo "$EDITOR $0"
+exit 1
+
 # On Arch systems
-#sudo pacman -S tealdeer tree most duf fd sccache eza bat ripgrep dust procs bottom broot tokei fclones htmlq legdur lemmeknow just rargs pastel macchina ouch teehee kibi zeitfetch
-#cargo install cargo-watch
+sudo pacman -S tealdeer tree most duf fd sccache eza bat ripgrep dust procs bottom broot tokei fclones htmlq legdur lemmeknow just rargs pastel macchina ouch teehee kibi zeitfetch
+cargo install cargo-watch
 
 # On Windows systems
 cargo install zeitfetch

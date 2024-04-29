@@ -1,0 +1,9 @@
+sudo rm /usr/share/applications/bssh.desktop
+sudo rm /usr/share/applications/bvnc.desktop
+sudo rm /usr/share/applications/org.kde.kuserfeedback-console.desktop
+sudo rm /usr/share/applications/qv4l2.desktop
+sudo rm /usr/share/applications/qvidcap.desktop
+sudo rm /usr/share/applications/avahi-discover.desktop
+sudo rm /usr/share/applications/electron28.desktop
+sudo rm /usr/share/applications/org.kde.plasma.emojier.desktop
+sudo rm /usr/share/applications/nvim.desktop
