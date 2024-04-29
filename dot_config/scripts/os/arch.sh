@@ -103,7 +103,8 @@ paru -S --noconfirm \
     onedrive-abraunegg anki-bin google-chrome snapd zapzap \
     visual-studio-code-bin spotify thorium-browser-bin \
     prismlauncher-qt5-bin aur-auto-vote-git tor-browser-bin \
-    todoist-appimage mkinitcpio-firmware betterbird-bin
+    todoist-appimage mkinitcpio-firmware betterbird-bin \
+    onlyoffice-bin
 exit
 
 exit
