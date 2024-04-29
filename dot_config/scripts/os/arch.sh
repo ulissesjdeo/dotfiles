@@ -81,7 +81,8 @@ pacman -S \
     power-profiles-daemon kscreen kcalc konsole dolphin zsh \
     spectacle chezmoi discord telegram-desktop p7zip wine \
     ntfs-3g neovim bitwarden flatpak base-devel unzip openssh \
-    gwenview okular gimp kdenlive krita blender
+    gwenview okular gimp kdenlive krita blender podman podman-docker \
+    
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
