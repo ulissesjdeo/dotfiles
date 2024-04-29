@@ -81,7 +81,7 @@ pacman -S \
     power-profiles-daemon kscreen kcalc konsole dolphin zsh \
     spectacle chezmoi discord telegram-desktop p7zip wine \
     ntfs-3g neovim bitwarden flatpak base-devel unzip openssh \
-    gwenview
+    gwenview okular gimp kdenlive krita blender
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
@@ -98,8 +98,8 @@ rm -rf paru-bin
 
 # Essential
 paru -S --noconfirm \
-    onedrive-abraunegg anki-bin google-chrome snapd qpdfview \
-    visual-studio-code-bin spotify thorium-browser-bin zapzap \
+    onedrive-abraunegg anki-bin google-chrome snapd zapzap \
+    visual-studio-code-bin spotify thorium-browser-bin \
     prismlauncher-qt5-bin 
 exit
 
