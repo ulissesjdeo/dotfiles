@@ -53,6 +53,9 @@ alias fpr='flatpak remove'
 alias fpi='flatpak install'
 alias fpc='flatpak uninstall --unused && flatpak repair'
 
+# podman
+alias sp='sudo podman'
+
 # cd
 alias c='cd'
 alias cdd='cd'
