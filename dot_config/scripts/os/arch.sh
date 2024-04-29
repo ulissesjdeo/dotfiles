@@ -23,7 +23,6 @@ HOOKS=(base resume autodetect microcode modconf kms)
 # /mnt/etc/mkinitcpio.d/linux.preset
 PRESETS=('default')
 
-pacstrap -K /mnt intel-ucode sof-firmware base linux linux-firmware nano sudo
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
@@ -44,6 +43,9 @@ n
 # /etc/pacman.conf
 ParallelDownloads = 3
 
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+
 # /etc/sudoers
 %wheel ALL=(ALL:ALL) NOPASSWD: ALL
 
@@ -52,10 +54,11 @@ usermod -s /bin/sh root
 passwd u
 passwd
 
-pacman -S networkmanager irqbalance bluez
+pacman -S networkmanager irqbalance bluez ly
 systemctl enable NetworkManager
 systemctl enable irqbalance
 systemctl enable bluetooth
+systemctl enable ly
 
 bootctl install
 
@@ -75,9 +78,9 @@ options root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2 rw quiet nmi_watchdog=0 mitiga
 
 pacman -S \
     plasma-desktop plasma-nm plasma-pa bluedevil git zip \
-    power-profiles-daemon kscreen kcalc konsole dolphin \
+    power-profiles-daemon kscreen kcalc konsole dolphin zsh \
     spectacle chezmoi discord telegram-desktop p7zip wine \
-    ntfs-3g neovim bitwarden flatpak base-devel unzip
+    ntfs-3g neovim bitwarden flatpak base-devel unzip openssh
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
@@ -112,6 +115,7 @@ reboot
 # Files and configs
 onedrive --synchronize
 chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git
+sudo usermod -s /bin/zsh u
 ln -s $HOME/OneDrive/Desktop Desktop
 ln -s $HOME/OneDrive/Docs Documents
 
