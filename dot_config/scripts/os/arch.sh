@@ -82,7 +82,7 @@ pacman -S \
     spectacle chezmoi discord telegram-desktop p7zip wine \
     ntfs-3g neovim bitwarden flatpak base-devel unzip openssh \
     gwenview okular gimp kdenlive krita blender podman podman-docker \
-    obs-studio
+    obs-studio obsidian
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
@@ -102,7 +102,7 @@ paru -S --noconfirm \
     onedrive-abraunegg anki-bin google-chrome snapd zapzap \
     visual-studio-code-bin spotify thorium-browser-bin \
     prismlauncher-qt5-bin aur-auto-vote-git tor-browser-bin \
-    
+    todoist-appimage
 exit
 
 exit

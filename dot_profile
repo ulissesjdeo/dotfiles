@@ -49,6 +49,7 @@ alias planner="cd $HOME/Documents/planner && python planner.py"
 
 # flatpak
 alias fp='flatpak'
+alias fpl='flatpak list'
 alias fpr='flatpak remove'
 alias fpi='flatpak install'
 alias fpc='flatpak uninstall --unused && flatpak repair'
