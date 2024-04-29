@@ -47,6 +47,12 @@ alias add_key_to_remote='ssh-copy-id'
 # dirs
 alias planner="cd $HOME/Documents/planner && python planner.py"
 
+# flatpak
+alias fp='flatpak'
+alias fpr='flatpak remove'
+alias fpi='flatpak install'
+alias fpc='flatpak uninstall --unused && flatpak repair'
+
 # cd
 alias c='cd'
 alias cdd='cd'
