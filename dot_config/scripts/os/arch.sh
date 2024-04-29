@@ -82,7 +82,7 @@ pacman -S \
     spectacle chezmoi discord telegram-desktop p7zip wine \
     ntfs-3g neovim bitwarden flatpak base-devel unzip openssh \
     gwenview okular gimp kdenlive krita blender podman podman-docker \
-    obs-studio obsidian pycharm-community-edition
+    obs-studio obsidian pycharm-community-edition python-pip
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
