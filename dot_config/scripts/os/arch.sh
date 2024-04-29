@@ -80,7 +80,8 @@ pacman -S \
     plasma-desktop plasma-nm plasma-pa bluedevil git zip \
     power-profiles-daemon kscreen kcalc konsole dolphin zsh \
     spectacle chezmoi discord telegram-desktop p7zip wine \
-    ntfs-3g neovim bitwarden flatpak base-devel unzip openssh
+    ntfs-3g neovim bitwarden flatpak base-devel unzip openssh \
+    gwenview
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
@@ -140,3 +141,4 @@ paru -Syu
 
 # Steam
 paru -S steam-native-runtime
+
