@@ -83,7 +83,7 @@ pacman -S \
     ntfs-3g neovim bitwarden flatpak base-devel unzip openssh \
     gwenview okular gimp kdenlive krita blender podman podman-docker \
     obs-studio obsidian pycharm-community-edition python-pip \
-    sqlitebrowser
+    sqlitebrowser remmina freerdp
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
