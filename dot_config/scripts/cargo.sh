@@ -3,8 +3,7 @@ echo "$EDITOR $0"
 exit 1
 
 # On Arch systems
-sudo pacman -S tealdeer tree most duf fd sccache eza bat ripgrep dust procs bottom broot tokei fclones htmlq legdur lemmeknow just rargs pastel macchina ouch teehee kibi zeitfetch
-cargo install cargo-watch
+sudo pacman -S tealdeer tree most duf fd sccache eza bat ripgrep dust procs bottom broot tokei fclones htmlq just pastel ouch
 
 # On Windows systems
 cargo install zeitfetch
@@ -23,13 +22,6 @@ cargo install broot
 cargo install tokei
 cargo install fclones
 cargo install htmlq
-cargo install legdur
-cargo install lemmeknow
 cargo install just
-cargo install rargs
 cargo install pastel
-cargo install macchina
 cargo install ouch
-cargo install teehee
-cargo install kibi
-cargo install cargo-watch
