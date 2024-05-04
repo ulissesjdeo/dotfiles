@@ -17,7 +17,7 @@ ParallelDownloads = 3
 pacstrap -K /mnt intel-ucode sof-firmware base linux linux-firmware nano sudo
 
 # /mnt/etc/mkinitcpio.conf
-MODULES=(nvme_core nvme f2fs)
+MODULES=(nvme nvme_core f2fs)
 HOOKS=(base resume autodetect microcode modconf kms)
 
 # /mnt/etc/mkinitcpio.d/linux.preset
@@ -64,7 +64,7 @@ bootctl install
 
 # /boot/loader/loader.conf
 default arch.conf
-timeout 0
+timeout 3  # 0 if not Windows installed
 console-mode keep
 editor no
 
@@ -73,8 +73,10 @@ title Arch Linux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2 rw quiet nmi_watchdog=0 mitigations=off \
-    systemd.show_status=false rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1
+options \
+	root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2
+	rw quiet nmi_watchdog=0 mitigations=off systemd.show_status=false \
+	rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1
 
 pacman -S \
     plasma-desktop plasma-nm plasma-pa bluedevil git zip \

@@ -45,7 +45,7 @@ alias miner='ssh u@192.168.31.71'
 alias add_key_to_remote='ssh-copy-id'
 
 # dirs
-alias planner="cd $HOME/Documents/planner && python planner.py"
+alias planner="cd $HOME/OneDrive/Documentos/planner && python planner.py"
 
 # flatpak
 alias fp='flatpak'
