@@ -38,7 +38,7 @@ alias clea=$CLEAR
 
 # local network
 alias op='ssh u@192.168.31.202'
-alias miner='ssh u@192.168.31.71'
+alias miner='ssh u@192.168.31.215'
 
 
 # ssh
