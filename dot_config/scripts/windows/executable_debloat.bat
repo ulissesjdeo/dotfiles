@@ -7,6 +7,9 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplicati
 # Disable realtime monitoring
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableRealtimeMonitoring" /t REG_DWORD /d 1 /f
 
+# Disable websearch
+reg add "HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableSearchBoxSuggestions" /t REG_DWORD /d 1 /f
+
 # Disable unnecessary services
 :checkPrivileges
 NET FILE 1>NUL 2>NUL
