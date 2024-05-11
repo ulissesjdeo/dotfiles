@@ -9,7 +9,7 @@ mount /dev/nvme0nXp1 /mnt/boot --mkdir
 # /etc/pacman.conf
 ParallelDownloads = 3
 
-pacstrap -K /mnt amd-ucode sof-firmware base linux linux-firmware nvidia nano sudo
+pacstrap -K /mnt amd-ucode base linux linux-firmware nvidia nano sudo
 
 # /mnt/etc/mkinitcpio.conf
 MODULES=(nvme nvme_core f2fs)
@@ -67,3 +67,7 @@ options \
 	root=/dev/nvme0nXp3
 	rw quiet nmi_watchdog=0 mitigations=off systemd.show_status=false \
 	rd.udev.log_level=0 vt.global_cursor_default=0
+
+exit
+umount -R /mnt
+reboot
