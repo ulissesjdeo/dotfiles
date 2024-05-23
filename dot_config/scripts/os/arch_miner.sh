@@ -46,8 +46,9 @@ usermod -s /bin/sh root
 passwd u
 passwd
 
-pacman -S networkmanager openssh
+pacman -S networkmanager cronie openssh
 systemctl enable NetworkManager
+systemctl enable cronie
 systemctl enable sshd
 
 bootctl install
