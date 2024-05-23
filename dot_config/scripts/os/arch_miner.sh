@@ -9,7 +9,7 @@ mount /dev/nvme0nXp1 /mnt/boot --mkdir
 # /etc/pacman.conf
 ParallelDownloads = 3
 
-pacstrap -K /mnt base linux linux-firmware amd-ucode nvidia nano sudo tmux
+pacstrap -K /mnt base linux linux-firmware amd-ucode nvidia nano sudo tmux wget
 
 # /mnt/etc/mkinitcpio.conf
 MODULES=(nvme nvme_core f2fs)
