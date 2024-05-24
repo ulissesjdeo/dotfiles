@@ -12,7 +12,7 @@ mount /dev/nvme0nXp1 /mnt/boot --mkdir
 # /etc/pacman.conf
 ParallelDownloads = 3
 
-pacstrap -K /mnt base linux linux-firmware amd-ucode nvidia nano sudo tmux wget
+pacstrap -K /mnt base base-devel linux linux-firmware amd-ucode nvidia nano sudo tmux wget git
 
 # /mnt/etc/mkinitcpio.conf
 MODULES=(nvme nvme_core f2fs)
@@ -74,4 +74,22 @@ options \
 
 exit
 umount -R /mnt
+reboot
+
+git clone --depth=1 https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -si
+cd ..
+rm -rf paru-bin
+
+paru -S --noconfirm alhp-keyring alhp-mirrorlist
+
+# /etc/pacman.conf
+[core-x86-64-v4]
+Include = /etc/pacman.d/alhp-mirrorlist
+
+[extra-x86-64-v4]
+Include = /etc/pacman.d/alhp-mirrorlist
+
+sudo pacman -Syu
 reboot
