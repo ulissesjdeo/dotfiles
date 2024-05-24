@@ -1,3 +1,6 @@
+# Remember to install Windows with custom ESP size to make dualboot easy
+# https://www.ctrl.blog/entry/how-to-esp-windows-setup.html
+
 gdisk /dev/nvme0nX
 
 mkfs.fat -F 32 /dev/nvme0nXp1
