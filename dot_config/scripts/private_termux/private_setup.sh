@@ -3,4 +3,4 @@ rm music movies podcasts documents audiobooks media-0 external-0 shared dcim dow
 rmdir storage
 ln -s /storage/emulated/0/ storage
 sh .config/scripts/zsh.sh
-npm install -g pnpm
+npm install -g pnpm typescript
