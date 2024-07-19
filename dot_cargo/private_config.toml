@@ -1,7 +1,3 @@
-[build]
-rustc-wrapper = "sccache"
-jobs = 4
-
 [cargo-new]
 vcs = "git"
 
