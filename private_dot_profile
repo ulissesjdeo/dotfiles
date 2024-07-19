@@ -37,15 +37,22 @@ alias clea=$CLEAR
 
 
 # local network
-alias op='ssh u@192.168.31.164'
-alias miner='ssh u@192.168.31.215'
+alias s24='ssh u0_a452@192.168.31.33 -p 8022'
+alias modula='ssh ulisses@modula.com.br -p 62222'
+alias tod='ssh u@192.168.31.43 sudo shutdown -h now'
+alias dw='ssh u@192.168.31.43 sh WINDOWS.sh'
+alias d='ssh u@192.168.31.43'
+alias o='ssh u@192.168.15.2'
 
+
+# mkdir
+alias mkd='mkdir'
 
 # ssh
 alias add_key_to_remote='ssh-copy-id'
 
 # dirs
-alias planner="cd $HOME/OneDrive/Documentos/planner; python planner.py; nano config.py; python planner.py"
+alias planner="cd $HOME/OneDrive/Documentos/planner/ && nano planner.py && python main.py"
 
 # flatpak
 alias fp='flatpak'
