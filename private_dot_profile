@@ -227,7 +227,7 @@ alias caches='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo s
 # END - Sudo
 # START - Pacman
 
-alias pkg='pacman -Q | wc -l'
+alias pkgs='pacman -Q | wc -l'
 alias inst='paru -S --noconfirm'
 alias update='paru -Syu --noconfirm'
 alias unins='sudo pacman -Rns --noconfirm'
@@ -309,5 +309,6 @@ gm () {
 # END - Functions
 
 # ssh
+eval $(ssh-agent -s) 1> /dev/null
 if [ -f $SSH_KEY_LOCATION ]; then ssh-add $SSH_KEY_LOCATION 2> /dev/null; fi
 if [ -f $SSH_KEY_LOCATION_FALLBACK ]; then ssh-add $SSH_KEY_LOCATION_FALLBACK 2> /dev/null; fi

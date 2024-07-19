@@ -34,9 +34,6 @@ bindkey "^[[3~" delete-char
 # config
 alias cfg='nano $HOME/.zshrc'
 
-# ssh
-eval $(ssh-agent -s) 1> /dev/null
-
 # profile
 source $HOME/.profile
 
