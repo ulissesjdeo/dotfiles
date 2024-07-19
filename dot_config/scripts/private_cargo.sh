@@ -2,8 +2,8 @@ echo "Keep uncommented just what you will use"
 echo "$EDITOR $0"
 exit 1
 
-# On Arch systems
-sudo pacman -S tealdeer tree most duf fd sccache eza bat ripgrep dust procs bottom broot tokei fclones htmlq just pastel ouch
+# On Arch systems (must be updated like Windows ones)
+#sudo pacman -S tealdeer tree most duf fd sccache eza bat ripgrep dust procs bottom broot tokei fclones htmlq just pastel ouch
 
 # On Windows systems
 cargo install zeitfetch
