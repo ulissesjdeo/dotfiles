@@ -1,3 +1,11 @@
+# Check for administrative privileges
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Please run with administrative privileges.
+    pause
+    exit /b
+)
+
 # Disable Windows 11 context menu
 reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
 
