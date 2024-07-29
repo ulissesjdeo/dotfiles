@@ -10,6 +10,9 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"
 # Disable websearch
 reg add "HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableSearchBoxSuggestions" /t REG_DWORD /d 1 /f
 
+# Add ultimate performance power plan
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+
 # Disable unnecessary services
 :checkPrivileges
 NET FILE 1>NUL 2>NUL
@@ -39,7 +42,7 @@ sc config DoSvc start= disabled
 sc stop WSearch
 sc config WSearch start= disabled
 
-# Disable telemtry
+# Disable telemetry
 :checkPrivileges
 NET FILE 1>NUL 2>NUL
 if '%errorlevel%' == '0' ( goto gotPrivileges ) else ( goto getPrivileges )
