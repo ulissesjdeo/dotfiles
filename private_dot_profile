@@ -45,6 +45,9 @@ alias d='ssh u@192.168.31.43'
 alias o='ssh u@192.168.15.2'
 
 
+# termux
+alias sshk='pkill sshd'
+
 # mkdir
 alias mkd='mkdir'
 
