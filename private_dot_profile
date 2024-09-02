@@ -37,7 +37,7 @@ alias clea=$CLEAR
 
 
 # local network
-alias s24='ssh u0_a452@192.168.31.33 -p 8022'
+alias s24='ssh u0_a452@192.168.31.31 -p 8022'
 alias modula='ssh ulisses@modula.com.br -p 62222'
 alias tod='ssh u@192.168.31.43 sudo shutdown -h now'
 alias dw='ssh u@192.168.31.43 sh WINDOWS.sh'
