@@ -8,7 +8,7 @@ SAVEHIST=999999999
 setopt appendhistory
 
 # p10k theme
-source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+if [ -f "$HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme" ]; then source "$HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme"; fi
 
 # arrows search
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
@@ -18,8 +18,7 @@ zle -N down-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
 # compinit
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 # plugins
 source $HOME/.zsh/syntax_highlighting/zsh-syntax-highlighting.zsh
@@ -35,7 +34,7 @@ bindkey "^[[3~" delete-char
 alias cfg='nano $HOME/.zshrc'
 
 # profile
-source $HOME/.profile
+if [ -f "$HOME/.profile" ]; then source "$HOME/.profile"; fi
 
 # p10k
-source $HOME/.p10k.zsh
+if [ -f "$HOME/.p10k.zsh" ]; then source "$HOME/.p10k.zsh"; fi

@@ -1,22 +1,5 @@
-# Android setup
-export ANDROID_HOME=$HOME/android-sdk
-export ANDROID_SDK_ROOT=$HOME/android-sdk
-
-# Java setup
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-
-# System vars setup
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$HOME/.pub-cache/bin
-
-# Chrome setup
-export CHROME_EXECUTABLE=google-chrome-stable
-
-# DE/WM setup
-export QT_QPA_PLATFORM=wayland
-export XDG_CURRENT_DESKTOP=KDE
-
 # SSH setup
-export SSH_KEY_LOCATION="$HOME/OneDrive/Documentos/private/ssh/id_ed25519"
+export SSH_KEY_LOCATION="$HOME/Files/ssh/id_ed25519"
 export SSH_KEY_LOCATION_FALLBACK="$HOME/.ssh/id_ed25519"
 
 # OS/Environment setup
@@ -37,25 +20,17 @@ alias clea=$CLEAR
 
 
 # local network
-alias s24='ssh u0_a452@192.168.31.31 -p 8022'
 alias modula='ssh ulisses@modula.com.br -p 62222'
-alias tod='ssh u@192.168.31.43 sudo shutdown -h now'
-alias dw='ssh u@192.168.31.43 sh WINDOWS.sh'
-alias d='ssh u@192.168.31.43'
-alias o='ssh u@192.168.15.2'
-
+alias postos='ssh root@postos.app.br -p 62222'
+alias s24='ssh u0_a452@192.168.15.3 -p 8022'
+alias s='ssh root@192.168.15.14 -p 48022'
 
 # termux
 alias sshk='pkill sshd'
 
 # mkdir
 alias mkd='mkdir'
-
-# ssh
-alias add_key_to_remote='ssh-copy-id'
-
-# dirs
-alias planner="cd $HOME/OneDrive/Documentos/planner/ && nano planner.py && python main.py"
+alias mkdi='mkdir'
 
 # flatpak
 alias fp='flatpak'
@@ -64,18 +39,11 @@ alias fpr='flatpak remove'
 alias fpi='flatpak install'
 alias fpc='flatpak uninstall --unused && flatpak repair'
 
-# podman
-alias sp='sudo podman'
-
 # cd
 alias c='cd'
 alias cdd='cd'
 alias cb='cd ..'
 alias cdb='cd ..'
-
-# micro
-alias mic='micro'
-alias micr='micro'
 
 # nano
 alias na='nano'
@@ -95,10 +63,6 @@ alias gini='git init'
 alias gc='git clone --depth=1'
 alias gfc='git init && git add . && git commit -m "Initial commit"'
 
-# flutter
-alias fl='flutter'
-alias ft='flutter'
-
 # exit
 alias e='exit'
 alias E='exit'
@@ -115,16 +79,11 @@ alias rftogbt='rfkill toggle bluetooth'
 
 # docker
 alias d='docker'
-alias dock='docker'
 alias docke='docker'
 
 # nvim
-alias v='nvim'
 alias nv='nvim'
-alias vi='nvim'
 alias nvi='nvim'
-alias vim='nvim'
-alias neov='nvim'
 alias neovi='nvim'
 alias neovim='nvim'
 
@@ -133,7 +92,6 @@ alias cat='bat'
 alias catt='/bin/cat'
 
 # grep
-alias gr='grep'
 alias gre='grep'
 
 # ls
@@ -148,13 +106,7 @@ alias rmf='rm -rf'
 alias rmrf='rm -rf'
 
 # rmdir
-alias rmd='rmdir'
 alias rmdi='rmdir'
-
-# onedrive
-alias oned='onedrive --synchronize --syncdir=$HOME/OneDrive'
-alias onedrive='onedrive --synchronize --syncdir=$HOME/OneDrive'
-alias onedrivemon='/bin/onedrive --monitor --syncdir=$HOME/OneDrive --disable-notifications'
 
 # django
 alias dj='python -m django'
@@ -193,8 +145,6 @@ alias pc='echo "$(whoami)@$HOST"'
 alias tut='tldr'
 alias mem='free -m'
 alias bt='bluetuith'
-alias zf='zeitfetch'
-alias ff='fastfetch'
 alias audio='pulsemixer'
 alias prof='nano $HOME/.profile'
 alias usage='du -h -d 1 . 2> /dev/null'

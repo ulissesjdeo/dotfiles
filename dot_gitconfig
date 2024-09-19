@@ -3,7 +3,5 @@
 	name = Ulisses João de Oliveira
 [init]
 	defaultBranch = main
-[safe]
-	directory = /opt/flutter
 [push]
 	autoSetupRemote = true
