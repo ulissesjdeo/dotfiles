@@ -14,7 +14,7 @@ swapon /dev/nvme0nXp2
 # /etc/pacman.conf
 ParallelDownloads = 3
 
-pacstrap -K /mnt intel-ucode sof-firmware base linux linux-firmware nano sudo
+pacstrap -K /mnt intel-ucode base linux linux-firmware nano sudo
 
 # /mnt/etc/mkinitcpio.conf
 MODULES=(nvme nvme_core f2fs)
@@ -52,13 +52,14 @@ Include = /etc/pacman.d/mirrorlist
 useradd -mG wheel u
 usermod -s /bin/sh root
 passwd u
-passwd
+passwd -d root
 
-pacman -S networkmanager irqbalance bluez ly
-systemctl enable NetworkManager
-systemctl enable irqbalance
-systemctl enable bluetooth
-systemctl enable ly
+pacman -S iwd
+systemctl enable iwd
+
+# /etc/iwd/main.conf
+[General]
+EnableNetworkConfiguration=true
 
 bootctl install
 
@@ -78,73 +79,12 @@ options \
 	rw quiet nmi_watchdog=0 mitigations=off systemd.show_status=false \
 	rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1
 
-pacman -S \
-    plasma-desktop plasma-nm plasma-pa bluedevil git zip \
-    power-profiles-daemon kscreen kcalc konsole dolphin zsh \
-    spectacle chezmoi discord telegram-desktop p7zip wine \
-    ntfs-3g neovim bitwarden flatpak base-devel unzip openssh \
-    gwenview okular gimp kdenlive krita blender podman podman-docker \
-    obs-studio obsidian pycharm-community-edition python-pip \
-    sqlitebrowser remmina freerdp
-
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
 AllowHibernation=yes
 AllowSuspendThenHibernate=no
 AllowHybridSleep=no
 
-su - u
-git clone --depth=1 https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si
-cd ..
-rm -rf paru-bin
-
-# Essential
-paru -S --noconfirm \
-    onedrive-abraunegg anki-bin google-chrome snapd zapzap \
-    visual-studio-code-bin spotify thorium-browser-bin \
-    prismlauncher-qt5-bin aur-auto-vote-git tor-browser-bin \
-    todoist-appimage mkinitcpio-firmware betterbird-bin \
-    onlyoffice-bin
-exit
-
 exit
 umount -R /mnt
 reboot
-
-
-
-# Post-install setup
-
-
-
-# Files and configs
-onedrive --synchronize
-chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git
-sudo usermod -s /bin/zsh u
-ln -s $HOME/OneDrive/Desktop Desktop
-ln -s $HOME/OneDrive/Docs Documents
-
-
-
-# ALHP
-paru -S --noconfirm alhp-keyring alhp-mirrorlist
-
-# /etc/pacman.conf
-[core-x86-64-v3]
-Include = /etc/pacman.d/alhp-mirrorlist
-
-[extra-x86-64-v3]
-Include = /etc/pacman.d/alhp-mirrorlist
-
-[multilib-x86-64-v3]
-Include = /etc/pacman.d/alhp-mirrorlist
-
-paru -Syu
-
-
-
-# Steam
-paru -S steam-native-runtime
-
