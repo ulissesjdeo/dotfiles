@@ -5,7 +5,6 @@ fi
 
 alias sshk='pkill sshd'
 
-alias lscount='ls -l ./ | sed 1d | wc -l'
 alias ls='eza -lh -s size --ignore-glob="*NTUSER*|msys2"'
 
 alias cza='chezmoi add'
@@ -16,7 +15,6 @@ alias bat='echo `cat /sys/class/power_supply/BAT1/capacity`%'
 alias hosts='sudo nano /etc/hosts'
 alias hostswin='nano /c/Windows/System32/drivers/etc/hosts'
 alias pc='echo "$(whoami)@$HOST"'
-alias mem='free -m'
 alias bt='bluetuith'
 alias audio='pulsemixer'
 alias prof='nano $HOME/.profile'
@@ -27,7 +25,6 @@ alias suspend='sudo systemctl suspend'
 alias shutdown='sudo shutdown -h now'
 alias reboot='sudo systemctl reboot'
 
-alias mkinit='sudo mkinitcpio -P'
 alias boottime='sudo systemd-analyze blame'
 
 alias cache='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches'
@@ -37,14 +34,6 @@ alias update='pacman -Syu --noconfirm'
 alias unins='sudo pacman -Rns --noconfirm'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
 alias clean='pacman -Sc --noconfirm; pacman -Scc --noconfirm; pacman -Scd --noconfirm; pacman -Sccd --noconfirm'
-
-saferm () {
-	mkdir $HOME/.deleted 2> /dev/null
-	timestamp=$(date +%s)
-	mkdir $HOME/.deleted/$timestamp 2> /dev/null
-	mv "$1" $HOME/.deleted/$timestamp
-	echo "Safely removed $1 to $HOME/.deleted/$timestamp/$1"
-}
 
 mkcd () {
 	mkdir "$1"
@@ -85,5 +74,3 @@ drupal7prepare () {
 bright () {
 	brightnessctl s $1%
 }
-
-if [ -f $SSH_KEY_LOCATION_FALLBACK ]; then ssh-add $SSH_KEY_LOCATION_FALLBACK 2> /dev/null; fi
