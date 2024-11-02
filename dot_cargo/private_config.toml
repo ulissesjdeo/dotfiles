@@ -1,9 +1,0 @@
-[cargo-new]
-vcs = "git"
-
-[term]
-quiet = false
-verbose = false
-color = 'auto'
-hyperlinks = true
-progress.when = 'auto'

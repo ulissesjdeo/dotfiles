@@ -1,3 +1,0 @@
-winget upgrade --all
-
-PAUSE
