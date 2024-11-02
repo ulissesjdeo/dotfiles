@@ -29,11 +29,11 @@ alias boottime='sudo systemd-analyze blame'
 
 alias cache='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches'
 
-alias pkgs='pacman -Q | wc -l'
-alias update='pacman -Syu --noconfirm'
+alias pkgs='sudo pacman -Q | wc -l'
+alias update='sudo pacman -Syu --noconfirm'
 alias unins='sudo pacman -Rns --noconfirm'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
-alias clean='pacman -Sc --noconfirm; pacman -Scc --noconfirm; pacman -Scd --noconfirm; pacman -Sccd --noconfirm'
+alias clean='sudo pacman -Sc --noconfirm; sudo pacman -Scc --noconfirm; sudo pacman -Scd --noconfirm; sudo pacman -Sccd --noconfirm'
 
 mkcd () {
 	mkdir "$1"
