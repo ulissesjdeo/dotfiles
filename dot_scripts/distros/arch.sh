@@ -26,6 +26,8 @@ PRESETS=('default')
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
+pacman -S vi nano tmux syncthing chezmoi openssh git
+
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 hwclock --systohc
 
@@ -51,9 +53,10 @@ passwd -d root
 useradd -mG wheel u
 passwd u
 
-pacman -S dropbear dhcpcd iwd
+pacman -S dropbear dhcpcd cronie iwd
 systemctl enable dropbear
 systemctl enable dhcpcd
+systemctl enable cronie
 systemctl enable iwd
 
 bootctl install
@@ -80,6 +83,20 @@ AllowHibernation=yes
 AllowSuspendThenHibernate=no
 AllowHybridSleep=no
 
+# /etc/systemd/logind.conf
+HandlePowerKeyLongPress=ignore
+HandleRebootKey=ignore
+HandleRebootKeyLongPress=ignore
+HandleSuspendKey=ignore
+HandleSuspendKeyLongPress=ignore
+HandleHibernateKey=ignore
+HandleHibernateKeyLongPress=ignore
+HandleLidSwitch=ignore
+HandleLidSwitchExternalPower=ignore
+HandleLidSwitchDocked=ignore
+
 exit
 umount -R /mnt
 reboot
+
+chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git
