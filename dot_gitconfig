@@ -1,7 +1,9 @@
 [user]
 	email = ulissesjoao2005@gmail.com
 	name = Ulisses João de Oliveira
+
 [init]
 	defaultBranch = main
+
 [push]
 	autoSetupRemote = true

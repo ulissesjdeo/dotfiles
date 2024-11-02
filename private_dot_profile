@@ -1,201 +1,42 @@
-# SSH setup
-export SSH_KEY_LOCATION="$HOME/Files/ssh/id_ed25519"
-export SSH_KEY_LOCATION_FALLBACK="$HOME/.ssh/id_ed25519"
+if [ -f "$HOME/Files/ssh/id_ed25519" ]; then
+    eval "$(ssh-agent -s)" > /dev/null
+    ssh-add "$HOME/Files/ssh/id_ed25519" 2> /dev/null
+fi
 
-# OS/Environment setup
-export EDITOR=nvim
-export CLEAR=clear
-
-
-# START - Variable aliases
-
-alias edit=$EDITOR
-alias editor=$EDITOR
-
-alias cl=$CLEAR
-alias cls=$CLEAR
-alias clea=$CLEAR
-
-# END - Variable aliases
-
-
-# local network
-alias modula='ssh ulisses@modula.com.br -p 62222'
-alias postos='ssh root@postos.app.br -p 62222'
-alias s24='ssh u0_a452@192.168.15.3 -p 8022'
-alias s='ssh root@192.168.15.14 -p 48022'
-
-# termux
 alias sshk='pkill sshd'
 
-# mkdir
-alias mkd='mkdir'
-alias mkdi='mkdir'
-
-# flatpak
-alias fp='flatpak'
-alias fpl='flatpak list'
-alias fpr='flatpak remove'
-alias fpi='flatpak install'
-alias fpc='flatpak uninstall --unused && flatpak repair'
-
-# cd
-alias c='cd'
-alias cdd='cd'
-alias cb='cd ..'
-alias cdb='cd ..'
-
-# nano
-alias na='nano'
-alias nan='nano'
-
-# df
-alias df='duf'
-alias dff='/usr/bin/df'
-
-# git
-alias g='git'
-alias gi='git'
-alias ga='git add .'
-alias gd='git diff'
-alias gs='git status'
-alias gini='git init'
-alias gc='git clone --depth=1'
-alias gfc='git init && git add . && git commit -m "Initial commit"'
-
-# exit
-alias e='exit'
-alias E='exit'
-alias ex='exit'
-alias EX='exit'
-alias exi='exit'
-alias EXI='exit'
-alias EXIT='exit'
-
-# rfkill
-alias rf='rfkill'
-alias rftogwi='rfkill toggle wifi'
-alias rftogbt='rfkill toggle bluetooth'
-
-# docker
-alias d='docker'
-alias docke='docker'
-
-# nvim
-alias nv='nvim'
-alias nvi='nvim'
-alias neovi='nvim'
-alias neovim='nvim'
-
-# bat
-alias cat='bat'
-alias catt='/bin/cat'
-
-# grep
-alias gre='grep'
-
-# ls
 alias lscount='ls -l ./ | sed 1d | wc -l'
-alias countls='ls -l ./ | sed 1d | wc -l'
-alias l='eza -lh -s size --ignore-glob="*NTUSER*|msys2"'
 alias ls='eza -lh -s size --ignore-glob="*NTUSER*|msys2"'
 
-# rm
-alias r='rm'
-alias rmf='rm -rf'
-alias rmrf='rm -rf'
-
-# rmdir
-alias rmdi='rmdir'
-
-# django
-alias dj='python -m django'
-alias djrun='python manage.py runserver'
-alias djmak='python manage.py makemigrations'
-alias djmig='python manage.py migrate'
-alias djcol='python manage.py collectstatic --noinput'
-
-# chezmoi
-alias cz='chezmoi'
 alias cza='chezmoi add'
 alias czd='chezmoi diff'
-alias czau='chezmoi update'
-alias czi='chezmoi init --apply'
 alias czcd='cd $HOME/.local/share/chezmoi'
-alias cziu='chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git'
 
-# python
-alias py='python'
-alias venvd='deactivate'
-alias pip='python -m pip'
-alias venv='python -m venv'
-alias serve='python -m http.server'
-alias pipr='python -m pip install -r'
-alias pipu='pip install --upgrade pip'
-alias pipup='pip install --upgrade pip'
-alias venva='source .venv/bin/activate'
-alias venvcu='python -m venv .venv; source .venv/bin/activate; pip install -r requirements.txt'
-
-
-# START - Utilities
-
-alias hosts='nano /etc/hosts'
+alias bat='echo `cat /sys/class/power_supply/BAT1/capacity`%'
+alias hosts='sudo nano /etc/hosts'
 alias hostswin='nano /c/Windows/System32/drivers/etc/hosts'
 alias pc='echo "$(whoami)@$HOST"'
-alias tut='tldr'
 alias mem='free -m'
 alias bt='bluetuith'
 alias audio='pulsemixer'
 alias prof='nano $HOME/.profile'
 alias usage='du -h -d 1 . 2> /dev/null'
-alias plasma='exec startplasma-wayland'
-alias routine='update && orphans; pkg && caches && clean'
 
-# END - Utilities
-# START - Sudo
-
-alias s='sudo'
-alias sud='sudo'
-alias sm='sudo mv'
-alias sr='sudo rm'
-alias sn='sudo nano'
-alias sg='sudo grep'
-alias sf='sudo find'
-alias st='sudo touch'
-alias sown='sudo chown'
-alias smod='sudo chmod'
-alias sc='sudo /bin/cat'
-alias srmrf='sudo rm -rf'
-
-alias ac='sudo tlp ac'
-alias batt='sudo tlp bat'
-
+alias hibernate='sudo systemctl hibernate'
+alias suspend='sudo systemctl suspend'
 alias shutdown='sudo shutdown -h now'
 alias reboot='sudo systemctl reboot'
 
 alias mkinit='sudo mkinitcpio -P'
 alias boottime='sudo systemd-analyze blame'
 
-alias uwin='sudo umount /mnt/win'
-alias win='sudo mount /dev/nvme0n1p3 /mnt/win'
-
-alias stopdroid='sudo systemctl stop waydroid-container'
-
 alias cache='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches'
-alias caches='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches && sudo swapoff -a && sudo swapon -a"'
-
-# END - Sudo
-# START - Pacman
 
 alias pkgs='pacman -Q | wc -l'
-alias inst='paru -S --noconfirm'
-alias update='paru -Syu --noconfirm'
+alias update='pacman -Syu --noconfirm'
 alias unins='sudo pacman -Rns --noconfirm'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
-alias clean='paru -Sc --noconfirm; paru -Scc --noconfirm; paru -Scd --noconfirm; paru -Sccd --noconfirm'
-
-# END - Pacman
-# START - Functions
+alias clean='pacman -Sc --noconfirm; pacman -Scc --noconfirm; pacman -Scd --noconfirm; pacman -Sccd --noconfirm'
 
 saferm () {
 	mkdir $HOME/.deleted 2> /dev/null
@@ -220,11 +61,7 @@ czu () {
 	git add .
 	git commit -m "$1"
 	git push
-	cd $HOME
-}
-
-wcr () {
-	wc -l `find "$1" -not -iwholename '*.git*' -type f`
+	cd $OLDPWD
 }
 
 own () {
@@ -235,14 +72,6 @@ own () {
 run () {
 	sudo chmod +x "$1"
 	./$1
-}
-
-gcu () {
-	git clone --depth=1 git@github.com:ulissesjdeo/$1.git
-}
-
-glu () {
-	git clone --depth=1 git@gitlab.com:ulissesjdeo/$1.git
 }
 
 drupal7prepare () {
@@ -257,18 +86,4 @@ bright () {
 	brightnessctl s $1%
 }
 
-hlcp () {
-	scp -r $HOMELAB:$1 $2
-}
-
-# FIXME: Not working with more than 1 word inside "string"
-gm () {
-	git commit -m $1
-}
-
-# END - Functions
-
-# ssh
-eval $(ssh-agent -s) 1> /dev/null
-if [ -f $SSH_KEY_LOCATION ]; then ssh-add $SSH_KEY_LOCATION 2> /dev/null; fi
 if [ -f $SSH_KEY_LOCATION_FALLBACK ]; then ssh-add $SSH_KEY_LOCATION_FALLBACK 2> /dev/null; fi

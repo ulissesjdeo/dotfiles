@@ -26,7 +26,7 @@ PRESETS=('default')
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
-pacman -S vi nano tmux syncthing chezmoi openssh git
+pacman -S vi nano tmux syncthing chezmoi openssh neovim git
 
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 hwclock --systohc

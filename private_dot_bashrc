@@ -1,12 +1,9 @@
-# config
 alias cfg='nano $HOME/.bashrc'
 
-# history
 export HISTSIZE=10000
 export HISTFILESIZE=20000
 export HISTCONTROL=ignoreboth
 export HISTTIMEFORMAT="%F %T "
 shopt -s histappend
 
-# profile
 source $HOME/.profile
