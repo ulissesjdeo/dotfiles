@@ -29,10 +29,8 @@ arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 hwclock --systohc
 
-# /etc/locale.gen
-en_US.UTF-8 UTF-8
-
-locale-gen
+# /etc/pacman.conf
+ParallelDownloads = 3
 
 # /etc/locale.conf
 LANG=en_US.UTF-8
@@ -40,32 +38,29 @@ LANG=en_US.UTF-8
 # /etc/hostname
 n
 
-# /etc/pacman.conf
-ParallelDownloads = 3
+# /etc/locale.gen
+en_US.UTF-8 UTF-8
 
-[multilib]
-Include = /etc/pacman.d/mirrorlist
+locale-gen
 
 # /etc/sudoers
 %wheel ALL=(ALL:ALL) NOPASSWD: ALL
 
-useradd -mG wheel u
 usermod -s /bin/sh root
-passwd u
 passwd -d root
+useradd -mG wheel u
+passwd u
 
-pacman -S iwd
+pacman -S dropbear dhcpcd iwd
+systemctl enable dropbear
+systemctl enable dhcpcd
 systemctl enable iwd
-
-# /etc/iwd/main.conf
-[General]
-EnableNetworkConfiguration=true
 
 bootctl install
 
 # /boot/loader/loader.conf
 default arch.conf
-timeout 3  # 0 if not Windows installed
+timeout 0
 console-mode keep
 editor no
 
@@ -75,9 +70,9 @@ linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
 options \
-	root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2
-	rw quiet nmi_watchdog=0 mitigations=off systemd.show_status=false \
-	rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1
+    root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2
+    rw quiet nmi_watchdog=0 mitigations=off systemd.show_status=false \
+    rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1 consoleblank=15
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
