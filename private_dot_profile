@@ -20,8 +20,8 @@ alias audio='pulsemixer'
 alias prof='nano $HOME/.profile'
 alias usage='du -h -d 1 . 2> /dev/null'
 
-alias hibernate='sudo systemctl hibernate'
-alias suspend='sudo systemctl suspend'
+alias hibernate='exec sudo systemctl hibernate'
+alias suspend='exec sudo systemctl suspend'
 alias shutdown='sudo shutdown -h now'
 alias reboot='sudo systemctl reboot'
 
