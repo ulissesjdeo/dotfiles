@@ -14,7 +14,7 @@ swapon /dev/nvme0nXp2
 # /etc/pacman.conf
 ParallelDownloads = 3
 
-pacstrap -K /mnt intel-ucode base linux linux-firmware nano sudo
+pacstrap -K /mnt sof-firmware intel-ucode base linux linux-firmware nano sudo
 
 # /mnt/etc/mkinitcpio.conf
 MODULES=(nvme nvme_core f2fs)
@@ -26,7 +26,7 @@ PRESETS=('default')
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
-pacman -S vi nano tmux syncthing chezmoi openssh neovim git
+pacman -S tmux syncthing chezmoi git
 
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 hwclock --systohc
@@ -53,11 +53,10 @@ passwd -d root
 useradd -mG wheel u
 passwd u
 
-pacman -S dropbear dhcpcd cronie iwd
-systemctl enable dropbear
-systemctl enable dhcpcd
-systemctl enable cronie
-systemctl enable iwd
+pacman -S networkmanager bluez ly
+systemctl enable NetworkManager
+systemctl enable bluetooth
+systemctl enable ly
 
 bootctl install
 
@@ -75,7 +74,7 @@ initrd /initramfs-linux.img
 options \
     root=/dev/nvme0nXp3 resume=/dev/nvme0nXp2
     rw quiet nmi_watchdog=0 mitigations=off systemd.show_status=false \
-    rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1 consoleblank=15
+    rd.udev.log_level=0 vt.global_cursor_default=0 i915.fastboot=1
 
 # /etc/systemd/sleep.conf
 AllowSuspend=yes
@@ -83,17 +82,7 @@ AllowHibernation=yes
 AllowSuspendThenHibernate=no
 AllowHybridSleep=no
 
-# /etc/systemd/logind.conf
-HandlePowerKeyLongPress=ignore
-HandleRebootKey=ignore
-HandleRebootKeyLongPress=ignore
-HandleSuspendKey=ignore
-HandleSuspendKeyLongPress=ignore
-HandleHibernateKey=ignore
-HandleHibernateKeyLongPress=ignore
-HandleLidSwitch=ignore
-HandleLidSwitchExternalPower=ignore
-HandleLidSwitchDocked=ignore
+pacman -S plasma-desktop dolphin konsole kscreen plasma-nm bluedevil power-profile-daemon plasma-pa
 
 exit
 umount -R /mnt
