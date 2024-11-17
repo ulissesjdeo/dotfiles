@@ -82,7 +82,7 @@ AllowHibernation=yes
 AllowSuspendThenHibernate=no
 AllowHybridSleep=no
 
-pacman -S plasma-desktop dolphin konsole kscreen plasma-nm bluedevil power-profile-daemon plasma-pa
+pacman -S plasma-desktop dolphin konsole kscreen plasma-nm bluedevil power-profile-daemon plasma-pa gdisk dosfstools
 
 exit
 umount -R /mnt
