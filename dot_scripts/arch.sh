@@ -82,7 +82,7 @@ AllowHibernation=yes
 AllowSuspendThenHibernate=no
 AllowHybridSleep=no
 
-pacman -S plasma-desktop dolphin konsole kscreen plasma-nm bluedevil power-profile-daemon plasma-pa gdisk dosfstools base-devel openssh
+pacman -S plasma-desktop dolphin konsole kscreen plasma-nm bluedevil power-profile-daemon plasma-pa gdisk dosfstools base-devel openssh eza
 
 exit
 umount -R /mnt
