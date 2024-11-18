@@ -82,10 +82,18 @@ AllowHibernation=yes
 AllowSuspendThenHibernate=no
 AllowHybridSleep=no
 
-pacman -S plasma-desktop dolphin konsole kscreen plasma-nm bluedevil power-profile-daemon plasma-pa gdisk dosfstools
+pacman -S plasma-desktop dolphin konsole kscreen plasma-nm bluedevil power-profile-daemon plasma-pa gdisk dosfstools base-devel
 
 exit
 umount -R /mnt
 reboot
+
+git clone --depth=1 https://aur.archlinux.org/aura.git
+cd aura
+makepkg -si
+cd ..
+rm -rf aura
+
+aura -A flutter-bin android-studio
 
 chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git
