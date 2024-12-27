@@ -35,6 +35,20 @@ alias unins='sudo pacman -Rns --noconfirm'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
 alias clean='sudo pacman -Sc --noconfirm; sudo pacman -Scc --noconfirm; sudo pacman -Scd --noconfirm; sudo pacman -Sccd --noconfirm'
 
+function cd() {
+  builtin cd "$@"
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+      if [[ -d ./.venv ]] ; then
+        source ./.venv/Scripts/activate
+      fi
+  else
+      parentdir="$(dirname "$VIRTUAL_ENV")"
+      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+        deactivate
+      fi
+  fi
+}
+
 mkcd () {
 	mkdir "$1"
 	cd "$1"
