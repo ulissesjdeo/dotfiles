@@ -16,9 +16,9 @@ mount /dev/md127 /mnt
 mount /dev/sda1 /mnt/boot --mkdir
 
 pacstrap -K /mnt \
-    base-devel linux linux-lts linux-firmware mdadm nano neovim sudo amd-ucode \
+    base linux linux-lts linux-firmware mdadm neovim sudo amd-ucode \
     plasma-desktop plasma-pa plasma-nm dolphin konsole kscreen bluedevil \
-    firefox openssh chezmoi
+    firefox openssh chezmoi git
 
 genfstab -U /mnt >> /mnt/etc/fstab
 mdadm --detail --scan >> /mnt/etc/mdadm.conf
