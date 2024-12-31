@@ -1,5 +1,5 @@
 gdisk /dev/sda
-# 256 MB - EF00
+# 256 MB - EFI system partition (EF00)
 # ALL - Linux RAID (FD00)
 
 gdisk /dev/sdb
