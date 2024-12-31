@@ -18,7 +18,7 @@ mount /dev/sda1 /mnt/boot --mkdir
 pacstrap -K /mnt \
     base-devel linux linux-lts linux-firmware mdadm nano neovim sudo amd-ucode \
     plasma-desktop plasma-pa plasma-nm dolphin konsole kscreen bluedevil \
-    firefox openssh
+    firefox openssh chezmoi
 
 genfstab -U /mnt >> /mnt/etc/fstab
 mdadm --detail --scan >> /mnt/etc/mdadm.conf
@@ -92,6 +92,14 @@ initrd /amd-ucode.img
 initrd /initramfs-linux-lts.img
 options root=/dev/md/raid rw raid0.default_layout=2
 
+git clone --depth=1 https://aur.archlinux.org/aura.git
+cd aura
+makepkg -si
+cd ..
+rm -rf aura
+
 exit
 umount -R /mnt
 reboot
+
+chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git
