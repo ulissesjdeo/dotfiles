@@ -28,8 +28,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 mdadm --detail --scan >> /mnt/etc/mdadm.conf
 
 # /etc/mkinitcpio.conf
-MODULES=(nvme nvme_core ext4)
-HOOKS=(base udev autodetect microcode modconf kms mdadm_udev)
+MODULES=(ext4)
+HOOKS=(base udev autodetect microcode modconf kms block mdadm_udev)
 
 # /mnt/etc/mkinitcpio.d/linux.preset
 PRESETS=('default')
