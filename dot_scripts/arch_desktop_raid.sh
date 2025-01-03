@@ -16,16 +16,20 @@ mount /dev/md127 /mnt
 mount /dev/sda1 /mnt/boot --mkdir
 
 pacstrap -K /mnt \
-    base linux linux-lts linux-firmware mdadm neovim sudo amd-ucode \
+    base-devel linux linux-lts linux-firmware mdadm neovim sudo amd-ucode \
     plasma-desktop plasma-pa plasma-nm dolphin konsole kscreen bluedevil \
-    firefox openssh chezmoi git
+    firefox openssh chezmoi git networkmanager bluez ly
+
+systemctl enable NetworkManager
+systemctl enable bluetooth
+systemctl enable ly
 
 genfstab -U /mnt >> /mnt/etc/fstab
 mdadm --detail --scan >> /mnt/etc/mdadm.conf
 
 # /etc/mkinitcpio.conf
-MODULES=(ext4)
-HOOKS=(base udev autodetect microcode modconf kms block mdadm_udev)
+MODULES=(nvme nvme_core ext4)
+HOOKS=(base udev autodetect microcode modconf kms mdadm_udev)
 
 # /mnt/etc/mkinitcpio.d/linux.preset
 PRESETS=('default')
@@ -34,9 +38,6 @@ PRESETS=('default')
 PRESETS=('default')
 
 arch-chroot /mnt
-
-rm /boot/initramfs-linux-fallback.img
-mkinitcpio -P
 
 ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 hwclock --systohc
@@ -63,11 +64,6 @@ passwd -d root
 useradd -mG wheel u
 passwd u
 
-pacman -S networkmanager bluez ly
-systemctl enable NetworkManager
-systemctl enable bluetooth
-systemctl enable ly
-
 bootctl install
 
 # /boot/loader/loader.conf
@@ -92,11 +88,13 @@ initrd /amd-ucode.img
 initrd /initramfs-linux-lts.img
 options root=/dev/md/raid rw raid0.default_layout=2
 
+su - u
 git clone --depth=1 https://aur.archlinux.org/aura.git
 cd aura
 makepkg -si
 cd ..
 rm -rf aura
+exit
 
 exit
 umount -R /mnt
