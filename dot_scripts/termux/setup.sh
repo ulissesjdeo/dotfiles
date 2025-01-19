@@ -6,6 +6,11 @@ cd storage
 rm music movies podcasts documents audiobooks media-0 external-0 shared dcim downloads pictures
 rmdir storage
 
+# Chezmoi
+eval $(ssh-agent -s)
+ssh-add ...
+chezmoi init --apply git@github.com:ulissesjdeo/dotfiles.git
+
 # Add folders reference
 ln -s /storage/emulated/0/ storage
 ln -s /storage/emulated/0/DCIM/ DCIM
