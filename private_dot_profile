@@ -35,6 +35,8 @@ alias unins='sudo pacman -Rns --noconfirm'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
 alias clean='sudo pacman -Sc --noconfirm; sudo pacman -Scc --noconfirm; sudo pacman -Scd --noconfirm; sudo pacman -Sccd --noconfirm'
 
+alias windows='sudo grub-reboot "Windows Boot Manager (on /dev/nvme1n1p1)" && sudo reboot'
+
 function cd() {
   builtin cd "$@"
   if [[ -z "$VIRTUAL_ENV" ]] ; then
