@@ -1,6 +1,7 @@
 if [ -f "$HOME/Files/ssh/id_ed25519" ]; then
     eval "$(ssh-agent -s)" > /dev/null
     ssh-add "$HOME/Files/ssh/id_ed25519" 2> /dev/null
+    ssh-add "$HOME/.ssh/id_ed25519" 2> /dev/null
 fi
 
 alias sshk='pkill sshd'
@@ -21,8 +22,6 @@ alias shutdown='sudo shutdown -h now'
 alias reboot='sudo systemctl reboot'
 
 alias boottime='sudo systemd-analyze blame'
-
-alias cache='sudo su -c "sudo sync; echo 1 > /proc/sys/vm/drop_caches && sudo sync; echo 2 > /proc/sys/vm/drop_caches && sudo sync; echo 3 > /proc/sys/vm/drop_caches'
 
 alias pkgs='sudo pacman -Q | wc -l'
 alias orphans='sudo pacman -Qtdq | sudo pacman -Rns - && sudo pacman -Qqd | sudo pacman -Rsu --print -'
