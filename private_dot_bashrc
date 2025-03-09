@@ -1,2 +1,0 @@
-alias cfg='nano $HOME/.bashrc'
-source $HOME/.profile
