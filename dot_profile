@@ -1,7 +1,7 @@
 if [ -f "$HOME/Files/ssh/id_ed25519" ]; then
-    eval "$(ssh-agent -s)" > /dev/null
+    eval "$(ssh-agent -s)" 1> /dev/null
     ssh-add "$HOME/Files/ssh/id_ed25519" 2> /dev/null
-    ssh-add "$HOME/.ssh/id_ed25519" 2> /dev/null
+    #ssh-add "$HOME/.ssh/id_ed25519" 2> /dev/null
 fi
 
 alias sshk='pkill sshd'
